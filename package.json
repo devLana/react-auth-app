@@ -1,0 +1,25 @@
+{
+  "name": "react-auth-app",
+  "version": "1.0.0",
+  "description": "An app with basic front end authorisation and authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devLana/react-auth-app.git"
+  },
+  "keywords": [
+    "react",
+    "javascript",
+    "authentication",
+    "authorisation"
+  ],
+  "author": "devLana",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devLana/react-auth-app/issues"
+  },
+  "homepage": "https://github.com/devLana/react-auth-app#readme"
+}
