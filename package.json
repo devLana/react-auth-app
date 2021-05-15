@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "description": "An app with basic front end authorisation and authentication",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config ./configs/webpack.prod.js",
     "watch": "webpack --watch",
-    "start": "webpack serve --open"
+    "dev": "webpack serve --open --config ./configs/webpack.dev.js"
   },
   "repository": {
     "type": "git",
@@ -19,9 +19,13 @@
   },
   "homepage": "https://github.com/devLana/react-auth-app#readme",
   "devDependencies": {
+    "@babel/core": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "babel-loader": "^8.2.2",
     "html-webpack-plugin": "^5.3.1",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   }
 }
