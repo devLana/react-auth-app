@@ -1,19 +1,19 @@
-const path = require("path");
+const { join } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
     index: "./src/index.js",
-    logger: "./src/logger.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Development Management",
+      title: "React Authentication App",
+      template: join(__dirname, "../dist/index.html"),
     }),
   ],
   output: {
-    filename: "[name].bundle.js",
-    path: path.join(__dirname, "../dist"),
+    filename: "app.bundle.js",
+    path: join(__dirname, "../build"),
     clean: true,
   },
   module: {
@@ -22,7 +22,7 @@ module.exports = {
         test: /\.js$/,
         use: ["babel-loader"],
         exclude: /node_modules/,
-      }
-    ]
-  }
+      },
+    ],
+  },
 };
