@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --config ./configs/webpack.prod.js",
     "watch": "webpack --watch",
-    "dev": "webpack serve --open --config ./configs/webpack.dev.js"
+    "dev": "webpack serve --open --config ./configs/webpack.dev.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -23,10 +24,15 @@
     "@babel/preset-env": "^7.14.2",
     "babel-loader": "^8.2.2",
     "html-webpack-plugin": "^5.3.1",
+    "husky": "^6.0.0",
+    "prettier": "2.3.0",
+    "pretty-quick": "^3.1.0",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3"
   },
-  "browserslist": ["defaults"]
+  "browserslist": [
+    "defaults"
+  ]
 }
