@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import { StrictMode } from "react";
+import { render } from "react-dom";
 
-const text = "Hello React with Webpack and Babel";
+import App from "./App";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <div>{text}</div>
-  </React.StrictMode>,
+render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
   document.getElementById("app-root")
 );
 
