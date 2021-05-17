@@ -9,3 +9,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("app-root")
 );
+
+module.hot.accept();

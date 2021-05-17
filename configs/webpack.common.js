@@ -1,4 +1,5 @@
 const { join } = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
@@ -9,6 +10,7 @@ module.exports = {
       template: join(__dirname, "../dist/index.html"),
       favicon: join(__dirname, "../dist/favicon.ico"),
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   output: {
     filename: "app-[contenthash].js",

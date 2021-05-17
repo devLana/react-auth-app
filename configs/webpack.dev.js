@@ -8,6 +8,7 @@ module.exports = merge(common, {
     contentBase: "./build",
     port: 9090,
     compress: true,
+    hot: true,
   },
   target: "web",
 });
