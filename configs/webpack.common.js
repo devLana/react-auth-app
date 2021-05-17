@@ -11,6 +11,10 @@ module.exports = {
       favicon: join(__dirname, "../dist/favicon.ico"),
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      React: "react",
+      ReactDOM: "react-dom",
+    }),
   ],
   output: {
     filename: "app-[contenthash].js",
