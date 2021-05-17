@@ -9,4 +9,5 @@ module.exports = merge(common, {
     port: 9090,
     compress: true,
   },
+  target: "web"
 });
