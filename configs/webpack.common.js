@@ -11,7 +11,6 @@ module.exports = {
       favicon: join(__dirname, "../dist/favicon.ico"),
       inject: "body",
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       React: "react",
       ReactDOM: "react-dom",
