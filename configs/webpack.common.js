@@ -9,6 +9,7 @@ module.exports = {
       title: "React Authentication App",
       template: join(__dirname, "../dist/index.html"),
       favicon: join(__dirname, "../dist/favicon.ico"),
+      inject: "body",
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
