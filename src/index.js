@@ -9,7 +9,3 @@ render(
   </StrictMode>,
   document.getElementById("app-root")
 );
-
-if (process.env.NODE_ENV !== "production") {
-  module.hot.accept();
-}
