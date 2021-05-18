@@ -16,11 +16,6 @@ module.exports = {
       ReactDOM: "react-dom",
     }),
   ],
-  output: {
-    filename: "app-[contenthash].js",
-    path: join(__dirname, "../build"),
-    clean: true,
-  },
   module: {
     rules: [
       {
