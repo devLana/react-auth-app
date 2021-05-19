@@ -3,7 +3,8 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: join(__dirname, "../src/index.js"),
+  context: join(__dirname, "../src"),
   plugins: [
     new HtmlWebpackPlugin({
       title: "React Authentication App",

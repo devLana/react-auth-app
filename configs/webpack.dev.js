@@ -13,10 +13,10 @@ module.exports = merge(common, {
   },
   devtool: "inline-source-map",
   devServer: {
-    contentBase: "./build",
+    contentBase: join(__dirname, "../build"),
     port: 9090,
-    compress: true,
     hot: true,
+    overlay: true,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
