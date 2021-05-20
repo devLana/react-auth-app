@@ -17,6 +17,11 @@ module.exports = {
       ReactDOM: "react-dom",
     }),
   ],
+  output: {
+    path: join(__dirname, "../build"),
+    clean: true,
+    publicPath: "/",
+  },
   module: {
     rules: [
       {

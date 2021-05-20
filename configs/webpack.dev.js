@@ -8,8 +8,6 @@ module.exports = merge(common, {
   mode: "development",
   output: {
     filename: "app.bundle.js",
-    path: join(__dirname, "../build"),
-    clean: true,
   },
   devtool: "inline-source-map",
   devServer: {
@@ -17,6 +15,7 @@ module.exports = merge(common, {
     port: 9090,
     hot: true,
     overlay: true,
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
