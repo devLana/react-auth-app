@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+
 import { StrictMode } from "react";
 import { render } from "react-dom";
 

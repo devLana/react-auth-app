@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 
 const App = () => {
   const [str, setStr] = useState("");
+  const title = "React made with Webpack & Babel";
 
   useEffect(() => {
-    setStr("React made with Webpack & Babel");
+    setStr(title);
   }, []);
 
   return <div>Hello {str}</div>;
