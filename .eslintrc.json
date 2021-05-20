@@ -29,25 +29,22 @@
       }
     ],
     "arrow-parens": [1, "as-needed"],
+    "arrow-body-style": [1, "as-needed"],
     "indent": [1, 2],
     "eol-last": 1,
     "object-curly-spacing": [1, "always"],
 
-    "react/react-in-jsx-scope": 0,
-    "react/jsx-filename-extension": 1,
-    "react/jsx-one-expression-per-line": 0,
-
     "jsx-a11y/alt-text": 1,
 
-    "import/no-extraneous-dependencies": [
-      2,
-      {
-        "devDependencies": true
-      }
-    ],
+    "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
     "import/order": 1,
+    "import/prefer-default-export": 0,
 
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-one-expression-per-line": 0,
+
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": 1
   }
 }
