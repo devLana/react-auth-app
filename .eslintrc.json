@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": "airbnb",
+  "extends": ["airbnb"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -22,12 +22,16 @@
       1,
       {
         "arrays": "always-multiline",
-        "objects": "only-multiline",
+        "objects": "always-multiline",
         "imports": "never",
         "exports": "never",
         "functions": "never"
       }
     ],
+    "arrow-parens": [1, "as-needed"],
+    "indent": [1, 2],
+    "eol-last": 1,
+    "object-curly-spacing": [1, "always"],
 
     "react/react-in-jsx-scope": 0,
     "react/jsx-filename-extension": 1,
