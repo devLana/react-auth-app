@@ -18,13 +18,9 @@ const AuthenticateRoutes = ({ component: Component, path, exact }) => {
 };
 
 AuthenticateRoutes.propTypes = {
-  component: PropTypes.func.isRequired,
+  component: PropTypes.elementType.isRequired,
   path: PropTypes.string.isRequired,
-  exact: PropTypes.bool,
-};
-
-AuthenticateRoutes.defaultProps = {
-  exact: false,
+  exact: PropTypes.bool.isRequired,
 };
 
 export default AuthenticateRoutes;
