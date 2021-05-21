@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import Image from "./Image";
 
 const formFields = { username: "", password: "" };
 
@@ -15,18 +16,16 @@ const Form = ({ type, submitHandler }) => {
   };
 
   const handleFocus = e => {
-    const { name, parentElement } = e.target;
-
-    parentElement.classList.remove("form-error");
-    setErrors({ ...errors, [name]: "" });
+    // const { name, parentElement } = e.target;
+    // parentElement.classList.remove("form-error");
+    // setErrors({ ...errors, [name]: "" });
   };
 
   const handleBlur = e => {
-    const { name, parentElement } = e.target;
-
-    if (errors[name]) {
-      parentElement.classList.add("form-error");
-    }
+    // const { name, parentElement } = e.target;
+    // if (errors[name]) {
+    //   parentElement.classList.add("form-error");
+    // }
   };
 
   const handleVisibility = e => {
@@ -39,66 +38,74 @@ const Form = ({ type, submitHandler }) => {
   };
 
   return (
-    <form noValidate onSubmit={handleSubmit}>
-      <div className="form__group">
-        <div className="form__input">
-          <label className="form__label" htmlFor="username">
-            <span className="form__input--label">Username</span>
+    <div>
+      <Image />
+      <form noValidate onSubmit={handleSubmit}>
+        <div className="form__group">
+          <div className="form__input">
+            <label
+              className="form__label"
+              htmlFor="username"
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+            >
+              <span className="form__input--label">Username</span>
+              <input
+                id="username"
+                type="text"
+                name="username"
+                onChange={handleChange}
+                value={values.username}
+              />
+            </label>
+          </div>
+          {errors.username && (
+            <span className="form__input--error">{errors.username}</span>
+          )}
+        </div>
+        <div className="form__group">
+          <div className="form__input">
+            <label className="form__label" htmlFor="password">
+              <span className="form__input--label">Password</span>
+              <input
+                id="password"
+                type={visible ? "text" : "password"}
+                name="password"
+                onChange={handleChange}
+                value={values.password}
+              />
+            </label>
+          </div>
+          {errors.password && (
+            <span className="form__input--error">{errors.password}</span>
+          )}
+        </div>
+        <div className="form__group">
+          <div className="form__input">
+            <label htmlFor="checkbox" className="form__input">
+              <span className="form__input--label">
+                {visible ? "Hide" : "Show"} Password
+              </span>
+              <input
+                id="checkbox"
+                type="checkbox"
+                checked={visible}
+                onChange={handleVisibility}
+              />
+            </label>
+          </div>
+        </div>
+        <div className="form__group">
+          <div className="form__input">
             <input
-              id="username"
-              type="text"
-              name="username"
-              onChange={handleChange}
-              value={values.username}
+              id="submit__btn"
+              type="submit"
+              value={type === "login" ? "Log in" : "Sign up"}
             />
-          </label>
+          </div>
         </div>
-        {errors.username && (
-          <span className="form__input--error">{errors.username}</span>
-        )}
-      </div>
-      <div className="form__group">
-        <div className="form__input">
-          <label className="form__label" htmlFor="password">
-            <span className="form__input--label">Password</span>
-            <input
-              id="password"
-              type={visible ? "text" : "password"}
-              name="password"
-              onChange={handleChange}
-              value={values.password}
-            />
-          </label>
-        </div>
-        {errors.password && (
-          <span className="form__input--error">{errors.password}</span>
-        )}
-      </div>
-      <div className="form__group">
-        <div className="form__input">
-          <label htmlFor="checkbox" className="form__input">
-            <span className="form__input--label">
-              {visible ? "Hide" : "Show"} Password
-            </span>
-            <input
-              id="checkbox"
-              type="checkbox"
-              checked={visible}
-              onChange={handleVisibility}
-            />
-          </label>
-        </div>
-      </div>
-      <div className="form__group">
-        <div className="form__input">
-          <input
-            id="submit__btn"
-            type="submit"
-            value={type === "login" ? "Log in" : "Sign up"}
-          />
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 

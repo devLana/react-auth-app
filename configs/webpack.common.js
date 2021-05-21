@@ -29,6 +29,10 @@ module.exports = {
         use: ["babel-loader"],
         exclude: /node_modules/,
       },
+      {
+        test: /\.(jpg|jpeg|png)$/i,
+        type: "asset/resource",
+      },
     ],
   },
   resolve: {
