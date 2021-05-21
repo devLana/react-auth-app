@@ -29,13 +29,18 @@
       }
     ],
     "arrow-parens": [1, "as-needed"],
-    "arrow-body-style": [1, "as-needed"],
+    "arrow-body-style": 0,
     "indent": [1, 2],
     "eol-last": 1,
     "object-curly-spacing": [1, "always"],
+    "max-len": 0,
+    "operator-linebreak": 0,
+    "no-useless-return": 0,
+    "no-alert": 0,
+    "no-console": 1,
 
     "jsx-a11y/alt-text": 1,
-    "jsx-a11y/label-has-associated-control": 0,
+    "jsx-a11y/label-has-associated-control": 1,
 
     "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
     "import/order": 1,
