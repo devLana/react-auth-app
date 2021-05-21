@@ -5,7 +5,7 @@ export const getUser = () => {
 };
 
 export const setUser = user => {
-  const saveUser = JSON.parse(user);
+  const saveUser = JSON.stringify(user);
 
   localStorage.setItem("user", saveUser);
 };
