@@ -52,7 +52,11 @@ const Form = ({ type }) => {
 };
 
 Form.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
+};
+
+Form.defaultProps = {
+  type: "sign up",
 };
 
 export default Form;

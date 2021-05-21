@@ -8,7 +8,11 @@ const LogIn = () => {
 
   return (
     <div>
-      {userIsLoggedIn ? <Redirect to={constants.LANDING_ROUTE} /> : <Form />}
+      {userIsLoggedIn ? (
+        <Redirect to={constants.LANDING_ROUTE} />
+      ) : (
+        <Form type="login" />
+      )}
     </div>
   );
 };
