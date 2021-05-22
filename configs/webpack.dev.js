@@ -2,6 +2,7 @@ const { join } = require("path");
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const ESLintPlugin = require("eslint-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const common = require("./webpack.common");
 
 module.exports = merge(common, {
@@ -23,6 +24,17 @@ module.exports = merge(common, {
     new ESLintPlugin({
       extensions: ["js", "jsx"],
     }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }),
   ],
   target: "web",
+  modules: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 });
