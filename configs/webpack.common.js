@@ -32,6 +32,10 @@ module.exports = {
         test: /\.(jpg|jpeg|png)$/i,
         type: "asset/resource",
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
   resolve: {
