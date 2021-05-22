@@ -1,3 +1,5 @@
+import "core-js/features/array/find";
+
 import { StrictMode } from "react";
 import { render } from "react-dom";
 
