@@ -1,3 +1,31 @@
-const LandingPage = () => <div>Landing Page</div>;
+import { Link } from "react-router-dom";
+import useDocTitle from "../hooks/useDocTitle";
+import constants from "../utils/Constants";
+
+const LandingPage = () => {
+  useDocTitle();
+
+  return (
+    <main>
+      <header>
+        <div>
+          <h1>React Authentication App</h1>
+        </div>
+        <div>
+          <p>Welcome!</p>
+          <p>This is the apps landing page</p>
+        </div>
+      </header>
+      <section>
+        <div>
+          <Link to={constants.LOGIN_ROUTE}>Log in</Link>
+        </div>
+        <div>
+          <Link to={constants.SIGN_UP_ROUTE}>Log in</Link>
+        </div>
+      </section>
+    </main>
+  );
+};
 
 export default LandingPage;
