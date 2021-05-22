@@ -21,7 +21,7 @@ const LandingPage = () => {
           <Link to={constants.LOGIN_ROUTE}>Log in</Link>
         </div>
         <div>
-          <Link to={constants.SIGN_UP_ROUTE}>Log in</Link>
+          <Link to={constants.SIGN_UP_ROUTE}>Sign Up</Link>
         </div>
       </section>
     </main>

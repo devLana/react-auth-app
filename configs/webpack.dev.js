@@ -29,7 +29,7 @@ module.exports = merge(common, {
     }),
   ],
   target: "web",
-  modules: {
+  module: {
     rules: [
       {
         test: /\.css$/i,

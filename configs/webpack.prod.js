@@ -9,7 +9,7 @@ module.exports = merge(common, {
     filename: "app-[contenthash].js",
   },
   devtool: "source-map",
-  modules: {
+  module: {
     rules: [
       {
         test: /\.css$/i,
