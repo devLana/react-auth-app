@@ -6,7 +6,9 @@ const common = require("./webpack.common");
 module.exports = merge(common, {
   mode: "production",
   output: {
-    filename: "app-[contenthash].js",
+    // filename: "app-[contenthash].js",
+    filename: "../build/js/app-[contenthash].js",
+    publicPath: "/build/",
   },
   devtool: "source-map",
   module: {
@@ -19,10 +21,10 @@ module.exports = merge(common, {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
+      filename: "../build/css/index.[contenthash].css",
     }),
   ],
   optimization: {
-    minimizer: [new CssMinimizerPlugin()],
+    minimizer: [new CssMinimizerPlugin(), "..."],
   },
 });
