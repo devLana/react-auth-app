@@ -3,9 +3,11 @@ import constants from "../utils/Constants";
 import useScreenWidth from "../hooks/useScreenWidth";
 import Avatar from "./Avatar";
 import Image from "./Image";
+import { getUser, logOut } from "../utils/auth";
 
 const Navbar = () => {
   const screenWidth = useScreenWidth();
+  const { username } = getUser();
 
   return (
     <nav>
@@ -30,13 +32,13 @@ const Navbar = () => {
             </div>
           </li>
           <li>
-            <Link to={constants.PROFILE_ROUTE}>View Profile</Link>
+            <Link to={`/${username}`}>View Profile</Link>
           </li>
           <li>
             <Link to={constants.DASHBOARD_ROUTE}>Dashboard</Link>
           </li>
           <li>
-            <span>Logout</span>
+            <button onClick={logOut}>Log out</button>
           </li>
         </ol>
       </div>
