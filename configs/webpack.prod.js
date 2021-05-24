@@ -8,7 +8,7 @@ module.exports = merge(common, {
   output: {
     // filename: "app-[contenthash].js",
     filename: "../build/js/app-[contenthash].js",
-    publicPath: "/build/",
+    publicPath: "/",
   },
   devtool: "source-map",
   module: {
