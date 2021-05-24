@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Image from "../Components/Image";
 import useDocTitle from "../hooks/useDocTitle";
 import constants from "../utils/Constants";
 
@@ -8,6 +9,9 @@ const LandingPage = () => {
   return (
     <main>
       <header>
+        <div>
+          <Image />
+        </div>
         <div>
           <h1>React Authentication App</h1>
         </div>
