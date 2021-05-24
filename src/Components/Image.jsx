@@ -4,7 +4,7 @@ const Image = () => {
   return (
     <picture>
       <source srcSet={Logo} />
-      <img src={Logo} alt="Logo" />
+      <img src={Logo} alt="Logo" loading="lazy" />
     </picture>
   );
 };
