@@ -8,6 +8,7 @@ module.exports = merge(common, {
   output: {
     filename: "js/app-[contenthash].js",
     publicPath: "/",
+    assetModuleFilename: "images/[hash][ext][query]",
   },
   devtool: "source-map",
   module: {
