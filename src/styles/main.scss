@@ -10,11 +10,11 @@
 
 html {
   box-sizing: border-box;
-  font: 62.5% "Padauk", sans-serif;
+  font: 62.5% $fontFamily;
 }
 
 body {
-  color: #330;
+  color: $fontColor;
   background-color: #fff;
 }
 
