@@ -3,8 +3,15 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: join(__dirname, "../src/index.js"),
+  entry: {
+    app: join(__dirname, "../src/index.js"),
+  },
   context: join(__dirname, "../src"),
+  output: {
+    path: join(__dirname, "../build"),
+    clean: true,
+    publicPath: "/",
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: "React Authentication App",
@@ -17,10 +24,6 @@ module.exports = {
       ReactDOM: "react-dom",
     }),
   ],
-  output: {
-    path: join(__dirname, "../build"),
-    clean: true,
-  },
   module: {
     rules: [
       {
@@ -33,6 +36,18 @@ module.exports = {
         type: "asset/resource",
       },
     ],
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "commons",
+          chunks: "all",
+        },
+      },
+    },
+    runtimeChunk: "single",
   },
   resolve: {
     extensions: [".jsx", "..."],

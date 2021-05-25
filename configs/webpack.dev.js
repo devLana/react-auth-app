@@ -7,10 +7,7 @@ const common = require("./webpack.common");
 
 module.exports = merge(common, {
   mode: "development",
-  output: {
-    filename: "app.bundle.js",
-    publicPath: "/",
-  },
+  target: "web",
   devtool: "inline-source-map",
   devServer: {
     contentBase: join(__dirname, "../build"),
@@ -19,16 +16,19 @@ module.exports = merge(common, {
     overlay: true,
     historyApiFallback: true,
   },
+  output: {
+    filename: "js/[name].bundle.js",
+    assetModuleFilename: "images/[hash][ext][query]",
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new ESLintPlugin({
       extensions: ["js", "jsx"],
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: "css/index.css",
     }),
   ],
-  target: "web",
   module: {
     rules: [
       {

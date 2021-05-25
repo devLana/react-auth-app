@@ -5,12 +5,16 @@ const common = require("./webpack.common");
 
 module.exports = merge(common, {
   mode: "production",
+  devtool: "source-map",
   output: {
-    filename: "js/app-[contenthash].js",
-    publicPath: "/",
+    filename: "js/[name]-[contenthash].js",
     assetModuleFilename: "images/[hash][ext][query]",
   },
-  devtool: "source-map",
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "css/index.[contenthash].css",
+    }),
+  ],
   module: {
     rules: [
       {
@@ -19,12 +23,8 @@ module.exports = merge(common, {
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: "css/index.[contenthash].css",
-    }),
-  ],
   optimization: {
     minimizer: [new CssMinimizerPlugin(), "..."],
+    moduleIds: "deterministic",
   },
 });
