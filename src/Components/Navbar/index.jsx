@@ -4,6 +4,7 @@ import useScreenWidth from "../hooks/useScreenWidth";
 import Avatar from "./Avatar";
 import Image from "./Image";
 import { getUser, logOut } from "../utils/auth";
+import "./index.scss";
 
 const Navbar = () => {
   const screenWidth = useScreenWidth();
