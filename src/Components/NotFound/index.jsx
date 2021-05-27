@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import Layout from "../Components/Layout";
-import useDocTitle from "../hooks/useDocTitle";
-import constants from "../utils/Constants";
+import Layout from "../Layout";
+import useDocTitle from "../../hooks/useDocTitle";
+import constants from "../../utils/Constants";
+import "./index.scss";
 
 const NotFound = () => {
   useDocTitle("Not Found");

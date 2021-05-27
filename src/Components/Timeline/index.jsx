@@ -1,4 +1,5 @@
-import Layout from "../Components/Layout";
+import Layout from "../Layout";
+import "./index.scss";
 
 const TimeLine = () => (
   <Layout>

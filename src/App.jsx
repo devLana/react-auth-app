@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthenticateRoutes from "./Components/ProtectedRoutes/AuthenticateRoutes";
 import AuthenticateLanding from "./Components/ProtectedRoutes/AuthenticateLanding";
 import Dashboard from "./pages/Dashboard";
-import LogIn from "./pages/LogIn";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUp";
@@ -39,7 +39,7 @@ const App = () => {
           <SignUp users={users} handleUsers={handleUsers} />
         </Route>
         <Route path={constants.LOGIN_ROUTE} exact>
-          <LogIn users={users} />
+          <Login users={users} />
         </Route>
         <AuthenticateRoutes
           component={Profile}

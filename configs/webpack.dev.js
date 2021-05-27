@@ -25,9 +25,6 @@ module.exports = merge(common, {
     new ESLintPlugin({
       extensions: ["js", "jsx"],
     }),
-    new MiniCssExtractPlugin({
-      filename: "css/index.css",
-    }),
   ],
   module: {
     rules: [

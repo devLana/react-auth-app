@@ -1,14 +1,15 @@
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { PropTypes } from "prop-types";
-import Form from "../Components/Form";
-import { isLoggedIn, setUser } from "../utils/auth";
-import constants from "../utils/Constants";
-import useDocTitle from "../hooks/useDocTitle";
+import Form from "../Form";
+import { isLoggedIn, setUser } from "../../utils/auth";
+import constants from "../../utils/Constants";
+import useDocTitle from "../../hooks/useDocTitle";
+import "./index.scss";
 
-const LogIn = ({ users }) => {
+const SignUp = ({ users, handleUsers }) => {
   const history = useHistory();
 
-  useDocTitle("Log in");
+  useDocTitle("Sign up");
 
   const userIsLoggedIn = isLoggedIn();
 
@@ -29,17 +30,16 @@ const LogIn = ({ users }) => {
       return;
     }
 
-    const userExists = users.find(({ username, password }) => {
-      return (
-        username === values.username.trim() && password === values.password
-      );
-    });
+    const userExists = users.some(
+      ({ username }) => username === values.username.trim()
+    );
 
     if (userExists) {
+      alert("That username has been taken. Try another one");
+    } else {
       history.push(constants.LANDING_ROUTE);
       setUser(values);
-    } else {
-      alert("Invalid username & password combination");
+      handleUsers(values);
     }
   };
 
@@ -48,22 +48,24 @@ const LogIn = ({ users }) => {
       {userIsLoggedIn ? (
         <Redirect to={constants.LANDING_ROUTE} />
       ) : (
-        <Form type="login" submitHandler={submitHandler} />
+        <Form submitHandler={submitHandler} />
       )}
       <div>
-        <Link to={constants.SIGN_UP_ROUTE}>Sign up</Link>
+        <span>Already have an account? </span>
+        <Link to={constants.LOGIN_ROUTE}>Log in</Link>
       </div>
     </div>
   );
 };
 
-LogIn.propTypes = {
+SignUp.propTypes = {
   users: PropTypes.arrayOf(
     PropTypes.shape({
       username: PropTypes.string,
       password: PropTypes.string,
     })
   ).isRequired,
+  handleUsers: PropTypes.func.isRequired,
 };
 
-export default LogIn;
+export default SignUp;

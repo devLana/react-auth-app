@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import Image from "./Image";
+import Image from "../Image";
+import "./index.scss";
 
 const formFields = { username: "", password: "" };
 

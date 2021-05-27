@@ -1,14 +1,15 @@
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { PropTypes } from "prop-types";
-import Form from "../Components/Form";
-import { isLoggedIn, setUser } from "../utils/auth";
-import constants from "../utils/Constants";
-import useDocTitle from "../hooks/useDocTitle";
+import Form from "../Form";
+import { isLoggedIn, setUser } from "../../utils/auth";
+import constants from "../../utils/Constants";
+import useDocTitle from "../../hooks/useDocTitle";
+import "./index.scss";
 
-const SignUp = ({ users, handleUsers }) => {
+const Login = ({ users }) => {
   const history = useHistory();
 
-  useDocTitle("Sign up");
+  useDocTitle("Log in");
 
   const userIsLoggedIn = isLoggedIn();
 
@@ -29,16 +30,17 @@ const SignUp = ({ users, handleUsers }) => {
       return;
     }
 
-    const userExists = users.some(
-      ({ username }) => username === values.username.trim()
-    );
+    const userExists = users.find(({ username, password }) => {
+      return (
+        username === values.username.trim() && password === values.password
+      );
+    });
 
     if (userExists) {
-      alert("That username has been taken. Try another one");
-    } else {
       history.push(constants.LANDING_ROUTE);
       setUser(values);
-      handleUsers(values);
+    } else {
+      alert("Invalid username & password combination");
     }
   };
 
@@ -47,24 +49,22 @@ const SignUp = ({ users, handleUsers }) => {
       {userIsLoggedIn ? (
         <Redirect to={constants.LANDING_ROUTE} />
       ) : (
-        <Form submitHandler={submitHandler} />
+        <Form type="login" submitHandler={submitHandler} />
       )}
       <div>
-        <span>Already have an account? </span>
-        <Link to={constants.LOGIN_ROUTE}>Log in</Link>
+        <Link to={constants.SIGN_UP_ROUTE}>Sign up</Link>
       </div>
     </div>
   );
 };
 
-SignUp.propTypes = {
+Login.propTypes = {
   users: PropTypes.arrayOf(
     PropTypes.shape({
       username: PropTypes.string,
       password: PropTypes.string,
     })
   ).isRequired,
-  handleUsers: PropTypes.func.isRequired,
 };
 
-export default SignUp;
+export default Login;

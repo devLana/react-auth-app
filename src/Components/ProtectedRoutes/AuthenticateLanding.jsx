@@ -1,7 +1,7 @@
 import { PropTypes } from "prop-types";
 import { Route } from "react-router-dom";
 import LandingPage from "../../pages/LandingPage";
-import TimeLine from "../../pages/TimeLine";
+import Timeline from "../../pages/Timeline";
 import { isLoggedIn } from "../../utils/auth";
 
 const AuthenticateLanding = ({ path, exact }) => {
@@ -9,7 +9,7 @@ const AuthenticateLanding = ({ path, exact }) => {
 
   return (
     <Route exact={exact} path={path}>
-      {userIsLoggedIn ? <TimeLine /> : <LandingPage />}
+      {userIsLoggedIn ? <Timeline /> : <LandingPage />}
     </Route>
   );
 };
