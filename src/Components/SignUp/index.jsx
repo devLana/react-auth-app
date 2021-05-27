@@ -44,17 +44,19 @@ const SignUp = ({ users, handleUsers }) => {
   };
 
   return (
-    <div>
-      {userIsLoggedIn ? (
-        <Redirect to={constants.LANDING_ROUTE} />
-      ) : (
-        <Form submitHandler={submitHandler} />
-      )}
-      <div>
-        <span>Already have an account? </span>
-        <Link to={constants.LOGIN_ROUTE}>Log in</Link>
+    <main className="sign-up__main">
+      <div className="sign-up__container">
+        {userIsLoggedIn ? (
+          <Redirect to={constants.LANDING_ROUTE} />
+        ) : (
+          <Form submitHandler={submitHandler} />
+        )}
+        <div>
+          <span>Already have an account? </span>
+          <Link to={constants.LOGIN_ROUTE}>Log in</Link>
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 

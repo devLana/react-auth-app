@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Image from "../Image";
 import "./index.scss";
+import constants from "../../utils/Constants";
+import formErrors from "../../utils/formErrors";
 
 const formFields = { username: "", password: "" };
 
@@ -10,6 +13,12 @@ const Form = ({ type, submitHandler }) => {
   const [errors, setErrors] = useState(formFields);
   const [visible, setVisible] = useState(false);
 
+  const userNameInput = useRef();
+
+  useEffect(() => {
+    userNameInput.current.focus();
+  }, []);
+
   const handleChange = e => {
     const { name, value } = e.target;
 
@@ -17,16 +26,18 @@ const Form = ({ type, submitHandler }) => {
   };
 
   const handleFocus = e => {
-    // const { name, parentElement } = e.target;
-    // parentElement.classList.remove("form-error");
-    // setErrors({ ...errors, [name]: "" });
+    const { name, parentElement } = e.target;
+    parentElement.classList.add("form__label--focus");
+    setErrors({ ...errors, [name]: "" });
   };
 
   const handleBlur = e => {
-    // const { name, parentElement } = e.target;
-    // if (errors[name]) {
-    //   parentElement.classList.add("form-error");
-    // }
+    const { name, parentElement, value } = e.target;
+
+    if (!value) {
+      parentElement.classList.remove("form__label--focus");
+      setErrors({ ...errors, [name]: formErrors[name] });
+    }
   };
 
   const handleVisibility = e => {
@@ -39,23 +50,25 @@ const Form = ({ type, submitHandler }) => {
   };
 
   return (
-    <div>
-      <Image />
+    <>
+      <div className="page__logo">
+        <Link to={constants.LANDING_ROUTE} className="form__link">
+          <Image />
+        </Link>
+      </div>
       <form noValidate onSubmit={handleSubmit}>
         <div className="form__group">
           <div className="form__input">
-            <label
-              className="form__label"
-              htmlFor="username"
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-            >
+            <label className="form__label" htmlFor="username">
               <span className="form__input--label">Username</span>
               <input
+                ref={userNameInput}
                 id="username"
                 type="text"
                 name="username"
                 onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 value={values.username}
               />
             </label>
@@ -73,6 +86,8 @@ const Form = ({ type, submitHandler }) => {
                 type={visible ? "text" : "password"}
                 name="password"
                 onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 value={values.password}
               />
             </label>
@@ -106,7 +121,7 @@ const Form = ({ type, submitHandler }) => {
           </div>
         </div>
       </form>
-    </div>
+    </>
   );
 };
 

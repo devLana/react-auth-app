@@ -45,7 +45,7 @@
 
     "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
     "import/order": 1,
-    "import/prefer-default-export": 0,
+    // "import/prefer-default-export": 0,
 
     "react/react-in-jsx-scope": 0,
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],

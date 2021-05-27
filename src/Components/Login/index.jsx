@@ -45,16 +45,18 @@ const Login = ({ users }) => {
   };
 
   return (
-    <div>
-      {userIsLoggedIn ? (
-        <Redirect to={constants.LANDING_ROUTE} />
-      ) : (
-        <Form type="login" submitHandler={submitHandler} />
-      )}
-      <div>
-        <Link to={constants.SIGN_UP_ROUTE}>Sign up</Link>
+    <main className="login__main">
+      <div className="login__container">
+        {userIsLoggedIn ? (
+          <Redirect to={constants.LANDING_ROUTE} />
+        ) : (
+          <Form type="login" submitHandler={submitHandler} />
+        )}
+        <div>
+          <Link to={constants.SIGN_UP_ROUTE}>Sign up</Link>
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 

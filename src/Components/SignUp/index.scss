@@ -1,0 +1,9 @@
+@import "../../styles/extends";
+
+.sign-up__main {
+  @extend %main-container;
+}
+
+.sign-up__container > :not(:last-child) {
+  margin-bottom: 2rem;
+}
