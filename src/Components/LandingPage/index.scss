@@ -1,0 +1,57 @@
+@use "../../styles/mixins";
+@use "../../styles/variables";
+
+.landing-page__main {
+  @include mixins.flex-display;
+  min-height: 100vh;
+}
+
+.landing-page__container {
+  header {
+    margin-bottom: 3.5rem;
+    @include mixins.flex-display(true) {
+      flex-direction: column;
+    }
+
+    > {
+      :not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  section {
+    @include mixins.flex-display(false, center, space-between);
+
+    a {
+      padding: 0.5rem 1.5rem;
+      color: variables.$primaryColor;
+      font-weight: bold;
+      border: 0.2rem solid transparent;
+      border-radius: 2.5rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: variables.$primaryColorLight;
+        border: 0.2rem solid variables.$primaryColor;
+      }
+    }
+  }
+}
+
+.landing-page__logo {
+  width: 10rem;
+}
+
+.landing-page__title > h1 {
+  font-size: variables.$h1;
+}
+
+@include mixins.media-query(variables.$smBreakpoint) {
+  .landing-page__container {
+    padding: 4rem 2.4rem;
+    border: 0.1rem solid variables.$primaryColor;
+    border-radius: 1rem;
+    box-shadow: 0 0 2rem -1.5rem variables.$primaryColorDark;
+  }
+}
