@@ -1,0 +1,15 @@
+@mixin flex-display($content: false, $align: center, $justify: center) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+
+  @if $content {
+    @content;
+  }
+}
+
+@mixin media-query($breakpoint) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
