@@ -11,7 +11,7 @@ const LandingPage = () => {
     <main className="landing-page__main">
       <div className="landing-page__container">
         <header>
-          <div className="landing-page__logo">
+          <div className="page__logo">
             <Image />
           </div>
           <div className="landing-page__title">

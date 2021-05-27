@@ -1,0 +1,7 @@
+@use "./mixins";
+@use "./variables";
+
+%main-container {
+  @include mixins.flex-display;
+  min-height: 100vh;
+}
