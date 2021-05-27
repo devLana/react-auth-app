@@ -1,14 +1,24 @@
-import { Link } from "react-router-dom";
-import constants from "../utils/Constants";
-import useScreenWidth from "../hooks/useScreenWidth";
-import Avatar from "./Avatar";
-import Image from "./Image";
-import { getUser, logOut } from "../utils/auth";
+import { Link, useHistory } from "react-router-dom";
+import useScreenWidth from "../../hooks/useScreenWidth";
+import Avatar from "../Avatar";
+import Image from "../Image";
+import constants from "../../utils/Constants";
+import { getUser, logOut } from "../../utils/auth";
 import "./index.scss";
 
 const Navbar = () => {
+  const history = useHistory();
   const screenWidth = useScreenWidth();
+
   const { username } = getUser();
+
+  const redirect = () => {
+    history.push(constants.LANDING_ROUTE);
+  };
+
+  const logUserOut = () => {
+    logOut(redirect);
+  };
 
   return (
     <nav>
@@ -39,7 +49,7 @@ const Navbar = () => {
             <Link to={constants.DASHBOARD_ROUTE}>Dashboard</Link>
           </li>
           <li>
-            <button onClick={logOut}>Log out</button>
+            <button onClick={logUserOut}>Log out</button>
           </li>
         </ol>
       </div>

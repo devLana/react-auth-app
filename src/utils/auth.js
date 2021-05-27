@@ -16,8 +16,8 @@ export const isLoggedIn = () => {
   return !!user;
 };
 
-export const logOut = () => {
+export const logOut = cb => {
   localStorage.removeItem("user");
 
-  window.location = "/";
+  cb();
 };
