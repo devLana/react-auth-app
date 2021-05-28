@@ -2,22 +2,32 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Image from "../Image";
-import "./index.scss";
 import constants from "../../utils/Constants";
-import formErrors from "../../utils/formErrors";
-
-const formFields = { username: "", password: "" };
+import {
+  formErrors,
+  formFields,
+  validatePassword,
+  validateUsername,
+} from "../../utils/form";
+import "./index.scss";
 
 const Form = ({ type, submitHandler }) => {
   const [values, setValues] = useState(formFields);
   const [errors, setErrors] = useState(formFields);
   const [visible, setVisible] = useState(false);
 
-  const userNameInput = useRef();
+  const usernameLabel = useRef();
+  const passwordLabel = useRef();
 
   useEffect(() => {
-    userNameInput.current.focus();
-  }, []);
+    if (errors.username) {
+      usernameLabel.current.classList.add("form__label--error");
+    }
+
+    if (errors.password) {
+      passwordLabel.current.classList.add("form__label--error");
+    }
+  }, [errors.username, errors.password]);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -27,14 +37,17 @@ const Form = ({ type, submitHandler }) => {
 
   const handleFocus = e => {
     const { name, parentElement } = e.target;
+
+    parentElement.classList.remove("form__label--error");
     parentElement.classList.add("form__label--focus");
+
     setErrors({ ...errors, [name]: "" });
   };
 
-  const handleBlur = e => {
-    const { name, parentElement, value } = e.target;
+  const handleBlur = (e, error) => {
+    const { name, parentElement } = e.target;
 
-    if (!value) {
+    if (error) {
       parentElement.classList.remove("form__label--focus");
       setErrors({ ...errors, [name]: formErrors[name] });
     }
@@ -59,16 +72,19 @@ const Form = ({ type, submitHandler }) => {
       <form noValidate onSubmit={handleSubmit}>
         <div className="form__group">
           <div className="form__input">
-            <label className="form__label" htmlFor="username">
-              <span className="form__input--label">Username</span>
+            <label
+              className="form__label"
+              htmlFor="username"
+              ref={usernameLabel}
+            >
+              <span>Username</span>
               <input
-                ref={userNameInput}
                 id="username"
                 type="text"
                 name="username"
                 onChange={handleChange}
                 onFocus={handleFocus}
-                onBlur={handleBlur}
+                onBlur={e => validateUsername(e, handleBlur)}
                 value={values.username}
               />
             </label>
@@ -79,15 +95,19 @@ const Form = ({ type, submitHandler }) => {
         </div>
         <div className="form__group">
           <div className="form__input">
-            <label className="form__label" htmlFor="password">
-              <span className="form__input--label">Password</span>
+            <label
+              className="form__label"
+              htmlFor="password"
+              ref={passwordLabel}
+            >
+              <span>Password</span>
               <input
                 id="password"
                 type={visible ? "text" : "password"}
                 name="password"
                 onChange={handleChange}
                 onFocus={handleFocus}
-                onBlur={handleBlur}
+                onBlur={e => validatePassword(e, handleBlur)}
                 value={values.password}
               />
             </label>
@@ -98,16 +118,14 @@ const Form = ({ type, submitHandler }) => {
         </div>
         <div className="form__group">
           <div className="form__input">
-            <label htmlFor="checkbox" className="form__input">
-              <span className="form__input--label">
-                {visible ? "Hide" : "Show"} Password
-              </span>
+            <label htmlFor="checkbox" className="form__checkbox">
               <input
                 id="checkbox"
                 type="checkbox"
                 checked={visible}
                 onChange={handleVisibility}
               />
+              <span>{visible ? "Hide" : "Show"} Password</span>
             </label>
           </div>
         </div>

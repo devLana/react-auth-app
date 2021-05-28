@@ -1,6 +1,16 @@
 @use "../../styles/mixins";
 @use "../../styles/variables";
 
+form {
+  width: 100%;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 .form__link {
   display: block;
 }
@@ -13,7 +23,7 @@
   position: relative;
   display: inline-block;
   height: 6rem;
-  width: 23.5rem;
+  width: 100%;
   border: 0.1rem solid variables.$primaryColorLight;
   border-radius: 0.6rem;
 
@@ -23,30 +33,88 @@
     left: 0;
     bottom: 0;
     top: 30%;
-    padding: 0.8rem;
-    border-radius: 1rem;
+    padding: 0.8rem 0.8rem 0.3rem;
+    border-radius: 0 0 0.6rem 0.6rem;
     border: none;
     outline: none;
     font-size: 1.6rem;
     color: variables.$primaryColorDark;
   }
 
-  .form__input--label {
-    transform: translate(0.8rem, 2.2rem);
+  span {
+    transform: translate(0.8rem, -50%);
     display: inline-block;
-    position: relative;
+    position: absolute;
+    top: 50%;
     z-index: 1;
     font-size: 1.8rem;
     color: rgba(variables.$primaryColor, 0.76);
-    transition: 0.09s ease-in;
+    transition: 0.15s ease-in;
   }
 }
 
 .form__label.form__label--focus {
   border: 0.2rem solid variables.$primaryColorDark;
 
-  .form__input--label {
-    transform: translate(0, 0.5rem) scale(0.8);
+  span {
+    transform: translate(0, 30%) scale(0.8);
+    top: 0;
     color: variables.$primaryColor;
+  }
+}
+
+.form__label.form__label--error {
+  border: 0.1rem solid variables.$formError;
+
+  span {
+    color: variables.$formError;
+  }
+}
+
+.form__input--error {
+  display: inline-block;
+  margin-top: 0.2rem;
+  color: variables.$formError;
+  font-weight: bold;
+}
+
+.form__checkbox {
+  width: 13rem;
+  @include mixins.flex-display(false, center, space-between);
+
+  input[type="checkbox"] {
+    border-radius: 0.2rem;
+    border: 0.2rem solid variables.$primaryColorDark;
+    padding: 0;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  input[type="checkbox"]:checked {
+    border-width: 0.4rem;
+  }
+
+  span {
+    user-select: none;
+    color: variables.$primaryColorDark;
+  }
+}
+
+#submit__btn {
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
+  background-color: variables.$primaryColorLight;
+  color: variables.$primaryColorDark;
+  font-weight: bold;
+  border: 0.2rem solid variables.$primaryColorDark;
+  border-radius: 2.5rem;
+  transition: 0.2s linear;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    color: variables.$primaryColorLight;
+    background-color: variables.$primaryColorDark;
   }
 }
