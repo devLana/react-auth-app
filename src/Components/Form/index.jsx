@@ -89,9 +89,9 @@ const Form = ({ type, submitHandler }) => {
               />
             </label>
           </div>
-          {errors.username && (
-            <span className="form__input--error">{errors.username}</span>
-          )}
+          <span className="form__input--error">
+            {errors.username && errors.username}
+          </span>
         </div>
         <div className="form__group">
           <div className="form__input">
@@ -112,9 +112,9 @@ const Form = ({ type, submitHandler }) => {
               />
             </label>
           </div>
-          {errors.password && (
-            <span className="form__input--error">{errors.password}</span>
-          )}
+          <span className="form__input--error">
+            {errors.password && errors.password}
+          </span>
         </div>
         <div className="form__group">
           <div className="form__input">
