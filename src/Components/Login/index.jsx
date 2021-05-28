@@ -4,6 +4,7 @@ import Form from "../Form";
 import { isLoggedIn, setUser } from "../../utils/auth";
 import constants from "../../utils/Constants";
 import useDocTitle from "../../hooks/useDocTitle";
+import { formErrors } from "../../utils/form";
 import "./index.scss";
 
 const Login = ({ users }) => {
@@ -17,11 +18,11 @@ const Login = ({ users }) => {
     const errors = {};
 
     if (!values.username.trim()) {
-      errors.username = "Enter username";
+      errors.username = formErrors.username;
     }
 
     if (!values.password) {
-      errors.password = "Enter password";
+      errors.password = formErrors.password;
     }
 
     setErrors(errors);
@@ -52,8 +53,8 @@ const Login = ({ users }) => {
         ) : (
           <Form type="login" submitHandler={submitHandler} />
         )}
-        <div>
-          <Link to={constants.SIGN_UP_ROUTE}>Sign up</Link>
+        <div className="login__link">
+          <Link to={constants.SIGN_UP_ROUTE}>Create Account</Link>
         </div>
       </div>
     </main>

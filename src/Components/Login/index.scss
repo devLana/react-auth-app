@@ -1,3 +1,5 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
 @import "../../styles/extends";
 
 .login__main {
@@ -6,4 +8,18 @@
 
 .login__container > :not(:last-child) {
   margin-bottom: 2rem;
+}
+
+.login__link {
+  @extend %form-text-link;
+}
+
+@include mixins.media-query(variables.$smBreakpoint) {
+  .login__container {
+    width: 38rem;
+    padding: 4rem 2.4rem;
+    border: 0.1rem solid variables.$primaryColor;
+    border-radius: 1rem;
+    box-shadow: 0 0 2rem -1.5rem variables.$primaryColorDark;
+  }
 }

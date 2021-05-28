@@ -5,3 +5,17 @@
   @include mixins.flex-display;
   min-height: 100vh;
 }
+
+%form-text-link {
+  text-align: center;
+  margin-top: 4rem;
+
+  a {
+    color: variables.$primaryColor;
+    transition: 0.2s linear;
+
+    &:hover {
+      color: variables.$primaryColorDark;
+    }
+  }
+}
