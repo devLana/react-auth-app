@@ -1,0 +1,30 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+@import "../../styles/extends";
+
+.not-found__main {
+  @extend %main-container-secondary;
+}
+
+.not-found__container > header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.not-found__text {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.not-found__link {
+  text-align: center;
+
+  a {
+    color: variables.$primaryColor;
+    transition: 0.2s linear;
+
+    &:hover {
+      color: variables.$primaryColorDark;
+    }
+  }
+}

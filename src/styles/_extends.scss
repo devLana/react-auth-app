@@ -19,3 +19,10 @@
     }
   }
 }
+
+%main-container-secondary {
+  @include mixins.flex-display(true, flex-start) {
+    min-height: 100vh;
+    padding-top: 3rem;
+  }
+}
