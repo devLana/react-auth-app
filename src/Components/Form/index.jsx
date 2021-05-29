@@ -3,12 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Image from "../Image";
 import constants from "../../utils/Constants";
-import {
-  formErrors,
-  formFields,
-  validatePassword,
-  validateUsername,
-} from "../../utils/form";
+import { formErrors, formFields } from "../../utils/form";
 import "./index.scss";
 
 const Form = ({ type, submitHandler }) => {
@@ -16,8 +11,13 @@ const Form = ({ type, submitHandler }) => {
   const [errors, setErrors] = useState(formFields);
   const [visible, setVisible] = useState(false);
 
+  const usernameInput = useRef();
   const usernameLabel = useRef();
   const passwordLabel = useRef();
+
+  useEffect(() => {
+    usernameInput.current.focus();
+  }, []);
 
   useEffect(() => {
     if (errors.username) {
@@ -44,10 +44,13 @@ const Form = ({ type, submitHandler }) => {
     setErrors({ ...errors, [name]: "" });
   };
 
-  const handleBlur = (e, error) => {
-    const { name, parentElement } = e.target;
+  const handleBlur = e => {
+    const { name, value, parentElement } = e.target;
 
-    if (error) {
+    if (name === "username" && !value.trim()) {
+      parentElement.classList.remove("form__label--focus");
+      setErrors({ ...errors, [name]: formErrors[name] });
+    } else if (name === "password" && !value) {
       parentElement.classList.remove("form__label--focus");
       setErrors({ ...errors, [name]: formErrors[name] });
     }
@@ -79,12 +82,13 @@ const Form = ({ type, submitHandler }) => {
             >
               <span>Username</span>
               <input
+                ref={usernameInput}
                 id="username"
                 type="text"
                 name="username"
                 onChange={handleChange}
                 onFocus={handleFocus}
-                onBlur={e => validateUsername(e, handleBlur)}
+                onBlur={handleBlur}
                 value={values.username}
               />
             </label>
@@ -107,7 +111,7 @@ const Form = ({ type, submitHandler }) => {
                 name="password"
                 onChange={handleChange}
                 onFocus={handleFocus}
-                onBlur={e => validatePassword(e, handleBlur)}
+                onBlur={handleBlur}
                 value={values.password}
               />
             </label>

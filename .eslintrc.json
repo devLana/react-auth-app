@@ -30,6 +30,7 @@
     "no-alert": 0,
     "no-console": 1,
     "space-infix-ops": 1,
+    "no-shadow": 0,
 
     "jsx-a11y/alt-text": 1,
     "jsx-a11y/label-has-associated-control": 1,
