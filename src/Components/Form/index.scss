@@ -79,7 +79,7 @@ input {
 }
 
 .form__checkbox {
-  width: 13rem;
+  width: 14rem;
   @include mixins.flex-display(false, center, space-between);
 
   input[type="checkbox"] {

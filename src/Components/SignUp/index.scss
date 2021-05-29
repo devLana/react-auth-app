@@ -3,7 +3,10 @@
 @import "../../styles/extends";
 
 .sign-up__main {
-  @extend %main-container;
+  @include mixins.flex-display(true, flex-start) {
+    min-height: 100vh;
+    padding-top: 3rem;
+  }
 }
 
 .sign-up__container {
