@@ -57,6 +57,12 @@ const Login = ({ users }) => {
           <Link to={constants.SIGN_UP_ROUTE}>Create Account</Link>
         </div>
       </div>
+      <div className="login__credentials">
+        <span>
+          &#123; username -&gt; &quot;jack&quot;, password -&gt;
+          &quot;1234abc&quot; &#125;
+        </span>
+      </div>
     </main>
   );
 };

@@ -6,6 +6,13 @@
   @extend %main-container;
 }
 
+.login__main {
+  @include mixins.flex-display(true) {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+}
+
 .login__container {
   width: 80%;
 
@@ -18,6 +25,17 @@
 
 .login__link {
   @extend %form-text-link;
+}
+
+.login__credentials {
+  width: 80%;
+  margin: 2rem auto 0;
+  text-align: center;
+
+  span {
+    color: variables.$primaryColor;
+    font-size: 1.3rem;
+  }
 }
 
 @include mixins.media-query(variables.$smBreakpoint) {
