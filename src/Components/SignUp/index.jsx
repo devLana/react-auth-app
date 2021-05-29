@@ -31,9 +31,9 @@ const SignUp = ({ users, handleUsers }) => {
       return;
     }
 
-    const userExists = users.some(
-      ({ username }) => username === values.username.trim()
-    );
+    const userExists = users.some(({ username }) => {
+      return username.toLowerCase() === values.username.toLowerCase();
+    });
 
     if (userExists) {
       alert("That username has been taken. Try another one");
@@ -44,14 +44,14 @@ const SignUp = ({ users, handleUsers }) => {
     }
   };
 
+  if (userIsLoggedIn) {
+    return <Redirect to={constants.LANDING_ROUTE} />;
+  }
+
   return (
     <main className="sign-up__main">
       <div className="sign-up__container">
-        {userIsLoggedIn ? (
-          <Redirect to={constants.LANDING_ROUTE} />
-        ) : (
-          <Form submitHandler={submitHandler} />
-        )}
+        <Form submitHandler={submitHandler} />
         <div className="sign-up__link">
           <span>Already have an account? </span>
           <Link to={constants.LOGIN_ROUTE}>Log in</Link>

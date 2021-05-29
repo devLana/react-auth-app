@@ -62,7 +62,13 @@ const Form = ({ type, submitHandler }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    submitHandler(values, setErrors);
+
+    const newValues = {
+      username: values.username.trim(),
+      password: values.password,
+    };
+
+    submitHandler(newValues, setErrors);
   };
 
   return (

@@ -17,7 +17,7 @@ const Login = ({ users }) => {
   const submitHandler = (values, setErrors) => {
     const errors = {};
 
-    if (!values.username.trim()) {
+    if (!values.username) {
       errors.username = formErrors.username;
     }
 
@@ -33,7 +33,8 @@ const Login = ({ users }) => {
 
     const userExists = users.find(({ username, password }) => {
       return (
-        username === values.username.trim() && password === values.password
+        username.toLowerCase() === values.username.toLowerCase() &&
+        password === values.password
       );
     });
 
@@ -45,14 +46,14 @@ const Login = ({ users }) => {
     }
   };
 
+  if (userIsLoggedIn) {
+    return <Redirect to={constants.LANDING_ROUTE} />;
+  }
+
   return (
     <main className="login__main">
       <div className="login__container">
-        {userIsLoggedIn ? (
-          <Redirect to={constants.LANDING_ROUTE} />
-        ) : (
-          <Form type="login" submitHandler={submitHandler} />
-        )}
+        <Form type="login" submitHandler={submitHandler} />
         <div className="login__link">
           <Link to={constants.SIGN_UP_ROUTE}>Create Account</Link>
         </div>
