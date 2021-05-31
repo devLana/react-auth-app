@@ -3,7 +3,11 @@ import "./index.scss";
 
 const Profile = () => (
   <Layout>
-    <div>Profile Page</div>
+    <main className="profile__main">
+      <div>
+        <h1>Profile Page</h1>
+      </div>
+    </main>
   </Layout>
 );
 
