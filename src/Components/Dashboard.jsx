@@ -1,5 +1,4 @@
-import Layout from "../Layout";
-import "./index.scss";
+import Layout from "./Layout";
 
 const Dashboard = () => (
   <Layout>

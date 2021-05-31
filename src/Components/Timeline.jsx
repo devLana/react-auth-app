@@ -1,11 +1,10 @@
-import Layout from "../Layout";
-import "./index.scss";
+import Layout from "./Layout";
 
 const TimeLine = () => (
   <Layout>
     <main className="timeline__main">
       <div className="wrapper">
-        <h1>TimeLine Page</h1>
+        <h1>Timeline Page</h1>
       </div>
     </main>
   </Layout>
