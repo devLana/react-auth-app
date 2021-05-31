@@ -1,4 +1,5 @@
-import { getUser } from "../utils/auth";
+import { getUser } from "../../utils/auth";
+import "./index.scss";
 
 const Avatar = () => {
   const { username } = getUser();
