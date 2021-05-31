@@ -1,0 +1,16 @@
+@use "../../styles/mixins";
+@use "../../styles/variables";
+
+.avatar__container {
+  @include mixins.flex-display;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  border: 0.1rem solid variables.$primaryColorDark;
+  border-radius: 50%;
+
+  span {
+    color: variables.$primaryColor;
+    user-select: none;
+  }
+}

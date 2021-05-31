@@ -5,7 +5,7 @@ const Avatar = () => {
   const { username } = getUser();
 
   return (
-    <div>
+    <div className="avatar__container">
       <span>
         {username.charAt(0).toUpperCase()}
         {username.charAt(1).toUpperCase()}
