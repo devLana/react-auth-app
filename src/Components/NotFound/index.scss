@@ -4,11 +4,16 @@
 
 .not-found__main {
   @extend %main-container-secondary;
-}
+  padding: 3rem 3rem 2.5rem;
 
-.not-found__container > header {
-  text-align: center;
-  margin-bottom: 3.5rem;
+  .wrapper {
+    width: 100%;
+
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+  }
 }
 
 .not-found__text {

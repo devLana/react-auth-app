@@ -10,7 +10,7 @@ const NotFound = () => {
   return (
     <Layout>
       <main className="not-found__main">
-        <div className="not-found__container">
+        <div className="wrapper">
           <header>
             <h1>Not Found</h1>
           </header>
