@@ -3,7 +3,11 @@ import "./index.scss";
 
 const TimeLine = () => (
   <Layout>
-    <div>TimeLine Page</div>
+    <main className="timeline__main">
+      <div className="wrapper">
+        <h1>TimeLine Page</h1>
+      </div>
+    </main>
   </Layout>
 );
 
