@@ -6,11 +6,11 @@
   width: 4rem;
   height: 4rem;
   cursor: pointer;
-  border: 0.1rem solid variables.$primaryColorDark;
+  border: 0.2rem solid variables.$primaryColorDark;
   border-radius: 50%;
 
   span {
-    color: variables.$primaryColor;
+    color: variables.$primaryColorDark;
     user-select: none;
   }
 }
