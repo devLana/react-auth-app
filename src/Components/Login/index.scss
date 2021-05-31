@@ -1,6 +1,5 @@
 @use "../../styles/variables";
 @use "../../styles/mixins";
-@import "../../styles/extends";
 
 .login__main {
   @include mixins.flex-display(true, center, flex-start) {
@@ -21,7 +20,17 @@
 }
 
 .login__link {
-  @extend %form-text-link;
+  text-align: center;
+  margin-top: 4rem;
+
+  a {
+    color: variables.$primaryColor;
+    transition: 0.2s linear;
+
+    &:hover {
+      color: variables.$primaryColorDark;
+    }
+  }
 }
 
 .login__credentials {

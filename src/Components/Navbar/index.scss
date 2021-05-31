@@ -7,10 +7,8 @@
   position: relative;
 }
 
-.wrapper {
+.page__nav > .wrapper {
   @include mixins.flex-display(false, center, space-between);
-  max-width: 100rem;
-  margin: 0 auto;
 }
 
 .nav__logo {

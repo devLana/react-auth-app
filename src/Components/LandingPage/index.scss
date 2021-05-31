@@ -1,9 +1,9 @@
 @use "../../styles/mixins";
 @use "../../styles/variables";
-@import "../../styles/extends";
 
 .landing-page__main {
-  @extend %main-container;
+  @include mixins.flex-display;
+  min-height: 100vh;
 }
 
 .landing-page__container {

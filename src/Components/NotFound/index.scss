@@ -1,9 +1,9 @@
 @use "../../styles/variables";
 @use "../../styles/mixins";
-@import "../../styles/extends";
 
 .not-found__main {
-  @extend %main-container-secondary;
+  @include mixins.flex-display(false, flex-start);
+  min-height: 100vh;
   padding: 3rem 3rem 2.5rem;
 
   .wrapper {

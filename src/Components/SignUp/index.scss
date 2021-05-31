@@ -1,9 +1,11 @@
 @use "../../styles/variables";
 @use "../../styles/mixins";
-@import "../../styles/extends";
 
 .sign-up__main {
-  @extend %main-container-secondary;
+  @include mixins.flex-display(true, flex-start) {
+    min-height: 100vh;
+    padding-top: 3rem;
+  }
 }
 
 .sign-up__container {
@@ -17,7 +19,17 @@
 }
 
 .sign-up__link {
-  @extend %form-text-link;
+  text-align: center;
+  margin-top: 4rem;
+
+  a {
+    color: variables.$primaryColor;
+    transition: 0.2s linear;
+
+    &:hover {
+      color: variables.$primaryColorDark;
+    }
+  }
 }
 
 @include mixins.media-query(variables.$smBreakpoint) {
