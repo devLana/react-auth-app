@@ -5,12 +5,10 @@ const useScreenWidth = () => {
 
   useEffect(() => {
     const updateWidth = () => {
-      setWidth(window.screen.width);
+      setWidth(window.innerWidth);
     };
 
     window.addEventListener("resize", updateWidth);
-
-    // updateWidth();
 
     return () => {
       window.removeEventListener("resize", updateWidth);

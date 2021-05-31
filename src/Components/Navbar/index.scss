@@ -1,0 +1,121 @@
+@use "../../styles/mixins";
+@use "../../styles/variables";
+
+.page__nav {
+  background-color: variables.$primaryColorLight;
+  padding: 2rem 3rem 2.5rem;
+  position: relative;
+}
+
+.wrapper {
+  @include mixins.flex-display(false, center, space-between);
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+.nav__logo {
+  width: 3.5rem;
+
+  a {
+    display: block;
+  }
+}
+
+.nav__avatar {
+  transform: scale(0.75);
+
+  button {
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+  }
+}
+
+.nav__menu__container {
+  display: none;
+}
+
+.nav__menu__container.open {
+  display: block;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 1rem;
+  background-color: variables.$primaryColorLight;
+  border-top: 0.1rem dashed variables.$primaryColorDark;
+}
+
+.nav__menu {
+  list-style: none;
+  @include mixins.flex-display(true, center) {
+    flex-direction: column;
+  }
+
+  .avatar__container {
+    background-color: variables.$primaryColorLight;
+    border: 0.2rem solid variables.$primaryColorDark;
+  }
+
+  li {
+    padding: 1rem 0;
+
+    a {
+      color: variables.$primaryColorDark;
+      font-weight: bold;
+      transition: 0.5s ease;
+
+      &:hover {
+        color: variables.$primaryColor;
+      }
+    }
+  }
+
+  li:nth-of-type(2) {
+    margin-bottom: 1.5rem;
+
+    a {
+      width: 14rem;
+      display: inline-block;
+      color: variables.$primaryColorDark;
+      font-weight: bold;
+      text-align: center;
+      padding: 0.5rem 1.5rem;
+      border: 0.2rem solid variables.$primaryColor;
+      border-radius: 1.5rem;
+      transition: 0.5s ease;
+      cursor: pointer;
+
+      &:hover {
+        border-color: variables.$primaryColorDark;
+        color: variables.$primaryColor;
+      }
+    }
+  }
+
+  li:last-of-type > button {
+    background-color: variables.$primaryColorDark;
+    padding: 0.5rem 1.5rem;
+    border: 0.2rem solid variables.$primaryColor;
+    border-radius: 0.5rem;
+    color: variables.$primaryColorLight;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+@include mixins.media-query(variables.$smBreakpoint) {
+  .nav__items {
+    @include mixins.flex-display(false, center, space-between);
+    width: 15rem;
+  }
+
+  .nav__dashboard--lg {
+    margin-right: 1rem;
+
+    a {
+      color: variables.$primaryColorDark;
+    }
+  }
+}

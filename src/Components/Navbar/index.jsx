@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import useScreenWidth from "../../hooks/useScreenWidth";
 import Avatar from "../Avatar";
@@ -7,6 +8,8 @@ import { getUser, logOut } from "../../utils/auth";
 import "./index.scss";
 
 const Navbar = () => {
+  const navRef = useRef();
+
   const history = useHistory();
   const screenWidth = useScreenWidth();
 
@@ -20,38 +23,52 @@ const Navbar = () => {
     logOut(redirect);
   };
 
+  const navToggle = () => {
+    if (navRef.current.className === "nav__menu__container") {
+      navRef.current.className += " open";
+    } else {
+      navRef.current.className = "nav__menu__container";
+    }
+  };
+
   return (
-    <nav>
-      <div>
-        <Link to={constants.LANDING_ROUTE}>
-          <Image />
-        </Link>
-      </div>
-      {screenWidth > 500 && (
-        <div>
-          <Link to={constants.DASHBOARD_ROUTE}>Dashboard</Link>
+    <nav className="page__nav">
+      <div className="wrapper">
+        <div className="nav__logo">
+          <Link to={constants.LANDING_ROUTE}>
+            <Image />
+          </Link>
         </div>
-      )}
-      <div>
-        <Avatar />
-      </div>
-      <div>
-        <ol>
-          <li>
-            <div>
-              <Avatar />
+        <div className="nav__items">
+          {screenWidth >= 600 && (
+            <div className="nav__dashboard--lg">
+              <Link to={constants.DASHBOARD_ROUTE}>Dashboard</Link>
             </div>
-          </li>
-          <li>
-            <Link to={`/${username}`}>View Profile</Link>
-          </li>
-          <li>
-            <Link to={constants.DASHBOARD_ROUTE}>Dashboard</Link>
-          </li>
-          <li>
-            <button onClick={logUserOut}>Log out</button>
-          </li>
-        </ol>
+          )}
+          <div className="nav__avatar">
+            <button onClick={navToggle}>
+              <Avatar />
+            </button>
+          </div>
+        </div>
+        <div className="nav__menu__container" ref={navRef}>
+          <ol className="nav__menu">
+            <li>
+              <Avatar />
+            </li>
+            <li>
+              <Link to={`/${username}`}>View Profile</Link>
+            </li>
+            {screenWidth < 600 && (
+              <li className="nav__dashboard--sm">
+                <Link to={constants.DASHBOARD_ROUTE}>Dashboard</Link>
+              </li>
+            )}
+            <li>
+              <button onClick={logUserOut}>Log out</button>
+            </li>
+          </ol>
+        </div>
       </div>
     </nav>
   );
