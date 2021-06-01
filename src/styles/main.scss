@@ -62,3 +62,9 @@ picture {
 .profile__main h1 {
   text-align: center;
 }
+
+.loader__text {
+  @include flex-display;
+  height: 100vh;
+  color: $primaryColor;
+}
