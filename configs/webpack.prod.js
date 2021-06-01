@@ -12,7 +12,7 @@ module.exports = merge(common, {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/index.[contenthash].css",
+      filename: "css/styles.[contenthash].css",
     }),
   ],
   module: {

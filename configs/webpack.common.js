@@ -11,6 +11,7 @@ module.exports = {
     path: join(__dirname, "../build"),
     clean: true,
     publicPath: "/",
+    hashDigestLength: 10,
   },
   plugins: [
     new HtmlWebpackPlugin({
