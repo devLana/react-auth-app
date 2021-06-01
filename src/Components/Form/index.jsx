@@ -92,6 +92,7 @@ const Form = ({ type, submitHandler }) => {
                 id="username"
                 type="text"
                 name="username"
+                autoComplete="username"
                 onChange={handleChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
@@ -115,6 +116,7 @@ const Form = ({ type, submitHandler }) => {
                 id="password"
                 type={visible ? "text" : "password"}
                 name="password"
+                autoComplete="new-password"
                 onChange={handleChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
