@@ -31,13 +31,13 @@
     "no-console": 1,
     "space-infix-ops": 1,
     "no-shadow": 0,
+    "object-curly-newline": "off",
 
     "jsx-a11y/alt-text": 1,
     "jsx-a11y/label-has-associated-control": 1,
 
     "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
     "import/order": 1,
-    // "import/prefer-default-export": 0,
 
     "react/react-in-jsx-scope": 0,
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
