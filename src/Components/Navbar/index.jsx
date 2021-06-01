@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
-import useScreenWidth from "../../hooks/useScreenWidth";
 import Avatar from "../Avatar";
 import Image from "../Image";
 import constants from "../../utils/Constants";
@@ -11,7 +10,6 @@ const Navbar = () => {
   const navRef = useRef();
 
   const history = useHistory();
-  const screenWidth = useScreenWidth();
 
   const { username } = getUser();
 
@@ -40,11 +38,9 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="nav__items">
-          {screenWidth >= 600 && (
-            <div className="nav__dashboard--lg">
-              <Link to={constants.DASHBOARD_ROUTE}>Dashboard</Link>
-            </div>
-          )}
+          <div className="nav__dashboard--lg">
+            <Link to={constants.DASHBOARD_ROUTE}>Dashboard</Link>
+          </div>
           <div className="nav__avatar">
             <button onClick={navToggle}>
               <Avatar />
@@ -59,11 +55,9 @@ const Navbar = () => {
             <li>
               <Link to={`/${username}`}>View Profile</Link>
             </li>
-            {screenWidth < 600 && (
-              <li className="nav__dashboard--sm">
-                <Link to={constants.DASHBOARD_ROUTE}>Dashboard</Link>
-              </li>
-            )}
+            <li className="nav__dashboard--sm">
+              <Link to={constants.DASHBOARD_ROUTE}>Dashboard</Link>
+            </li>
             <li>
               <button onClick={logUserOut}>Log out</button>
             </li>

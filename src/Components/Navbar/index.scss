@@ -19,6 +19,10 @@
   }
 }
 
+.nav__dashboard--lg {
+  display: none;
+}
+
 .nav__avatar {
   transform: scale(0.75);
 
@@ -110,10 +114,15 @@
   }
 
   .nav__dashboard--lg {
+    display: block;
     margin-right: 1rem;
 
     a {
       color: variables.$primaryColorDark;
     }
+  }
+
+  .nav__dashboard--sm {
+    display: none;
   }
 }
