@@ -1,4 +1,6 @@
 import "core-js/features/array/find";
+import "core-js/modules/es.promise";
+import "core-js/modules/es.array.iterator";
 
 import { StrictMode } from "react";
 import { render } from "react-dom";
