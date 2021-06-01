@@ -1,8 +1,12 @@
+import { lazy } from "react";
 import { PropTypes } from "prop-types";
 import { Route } from "react-router-dom";
 import LandingPage from "../../pages/LandingPage";
-import Timeline from "../../pages/Timeline";
 import { isLoggedIn } from "../../utils/auth";
+
+const Timeline = lazy(() => {
+  return import(/* webpackChunkName: "Timeline" */ "../../pages/Timeline");
+});
 
 const AuthenticateLanding = ({ path, exact }) => {
   const userIsLoggedIn = isLoggedIn();
