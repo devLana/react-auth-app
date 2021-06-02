@@ -10,19 +10,17 @@ const NotFound = () => {
   return (
     <Layout>
       <main className="not-found__main">
-        <div className="wrapper">
-          <header>
-            <h1>Not Found</h1>
-          </header>
-          <section>
-            <div className="not-found__text">
-              <p>The content you are looking for does not exist</p>
-            </div>
-            <div className="not-found__link">
-              <Link to={constants.LANDING_ROUTE}>Go home</Link>
-            </div>
-          </section>
-        </div>
+        <header>
+          <h1>Not Found</h1>
+        </header>
+        <section>
+          <div className="not-found__text">
+            <p>The content you are looking for does not exist</p>
+          </div>
+          <div className="not-found__link">
+            <Link to={constants.LANDING_ROUTE}>Go home</Link>
+          </div>
+        </section>
       </main>
     </Layout>
   );

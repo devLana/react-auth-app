@@ -2,17 +2,15 @@
 @use "../../styles/mixins";
 
 .not-found__main {
-  @include mixins.flex-display(false, flex-start);
-  min-height: 100vh;
-  padding: 3rem 3rem 2.5rem;
+  @include mixins.flex-display(true, center, flex-start) {
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 3rem 3rem 2.5rem;
+  }
 
-  .wrapper {
-    width: 100%;
-
-    header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
+  header {
+    text-align: center;
+    margin-bottom: 3.5rem;
   }
 }
 

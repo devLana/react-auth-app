@@ -47,22 +47,22 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-        <div className="nav__menu__container" ref={navRef}>
-          <ol className="nav__menu">
-            <li>
-              <Avatar />
-            </li>
-            <li>
-              <Link to={`/${username}`}>View Profile</Link>
-            </li>
-            <li className="nav__dashboard--sm">
-              <Link to={constants.DASHBOARD_ROUTE}>Dashboard</Link>
-            </li>
-            <li>
-              <button onClick={logUserOut}>Log out</button>
-            </li>
-          </ol>
-        </div>
+      </div>
+      <div className="nav__menu__container" ref={navRef}>
+        <ol className="nav__menu">
+          <li>
+            <Avatar />
+          </li>
+          <li>
+            <Link to={`/${username}`}>View Profile</Link>
+          </li>
+          <li className="nav__dashboard--sm">
+            <Link to={constants.DASHBOARD_ROUTE}>Dashboard</Link>
+          </li>
+          <li>
+            <button onClick={logUserOut}>Log out</button>
+          </li>
+        </ol>
       </div>
     </nav>
   );

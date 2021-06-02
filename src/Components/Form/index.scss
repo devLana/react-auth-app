@@ -49,11 +49,13 @@ input {
     font-size: 1.8rem;
     color: rgba(variables.$primaryColor, 0.76);
     transition: 0.15s linear;
+    user-select: none;
   }
 }
 
 .form__label.form__label--focus {
   border: 0.2rem solid variables.$primaryColorDark;
+  box-shadow: 0 0 0.4rem 0.2rem variables.$primaryColor;
 
   span {
     transform: translate(-0.2rem, 10%) scale(0.75);
@@ -71,7 +73,7 @@ input {
 
 .form__input--error {
   display: inline-block;
-  margin-top: 0.2rem;
+  margin-top: 0.5rem;
   color: variables.$formError;
   font-weight: bold;
 }
@@ -114,5 +116,9 @@ input {
   &:hover {
     color: variables.$primaryColorLight;
     background-color: variables.$primaryColorDark;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0.4rem 0.2rem variables.$primaryColor;
   }
 }
