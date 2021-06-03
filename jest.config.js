@@ -1,3 +1,1 @@
-module.exports = {
-  moduleFileExtensions: ["js", "jsx"],
-};
+module.exports = {};
