@@ -5,9 +5,10 @@
   "description": "An app with basic front end authentication",
   "scripts": {
     "build": "webpack --config ./configs/webpack.prod.js",
-    "watch": "webpack --watch",
     "dev": "webpack serve --open --config ./configs/webpack.dev.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest -- --watch",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
