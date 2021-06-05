@@ -25,7 +25,7 @@ describe("get user from localStorage", () => {
   });
 });
 
-describe("setUser Function", () => {
+describe("save user to localStorage", () => {
   afterAll(() => {
     localStorage.removeItem("test-user");
   });
@@ -44,7 +44,7 @@ describe("setUser Function", () => {
   });
 });
 
-describe("isLoggedIn Function", () => {
+describe("check if user is already logged in", () => {
   afterAll(() => {
     localStorage.removeItem("test-user");
   });
