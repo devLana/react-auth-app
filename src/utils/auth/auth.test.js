@@ -21,3 +21,22 @@ describe("getUser Function", () => {
     expect(user).toHaveProperty("password");
   });
 });
+
+describe("setUser Function", () => {
+  afterAll(() => {
+    localStorage.removeItem("test-user");
+  });
+
+  test("saves user to localStorage", () => {
+    const env = "test";
+    const testUser = { username: "jack", password: "1234abc" };
+
+    auth.setUser(testUser, env);
+
+    const user = JSON.parse(localStorage.getItem("test-user"));
+
+    expect(user).toEqual(testUser);
+    expect(user).toHaveProperty("username");
+    expect(user).toHaveProperty("password");
+  });
+});
