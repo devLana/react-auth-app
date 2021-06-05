@@ -1,12 +1,12 @@
 import * as auth from ".";
 
-describe("get user from localStorage", () => {
-  afterAll(() => {
-    localStorage.removeItem("test-user");
-  });
+afterEach(() => {
+  localStorage.removeItem("test-user");
+});
 
-  const testUser = { username: "jack", password: "1234abc" };
+describe("get user from localStorage", () => {
   const env = "test";
+  const testUser = { username: "jack", password: "1234abc" };
 
   test("no user in localStorage", () => {
     const user = auth.getUser(env);
@@ -17,6 +17,7 @@ describe("get user from localStorage", () => {
 
   test("found user in localStorage", () => {
     localStorage.setItem("test-user", JSON.stringify(testUser));
+
     const user = auth.getUser(env);
 
     expect(user).toEqual(testUser);
@@ -26,10 +27,6 @@ describe("get user from localStorage", () => {
 });
 
 describe("save user to localStorage", () => {
-  afterAll(() => {
-    localStorage.removeItem("test-user");
-  });
-
   test("saved user to localStorage", () => {
     const env = "test";
     const testUser = { username: "jack", password: "1234abc" };
@@ -45,13 +42,9 @@ describe("save user to localStorage", () => {
 });
 
 describe("check if user is already logged in", () => {
-  afterAll(() => {
-    localStorage.removeItem("test-user");
-  });
+  const env = "test";
 
   test("user is not logged in", () => {
-    const env = "test";
-
     const userIsLoggedIn = auth.isLoggedIn(env);
 
     expect(userIsLoggedIn).toBeFalsy();
@@ -59,7 +52,6 @@ describe("check if user is already logged in", () => {
   });
 
   test("user is logged in", () => {
-    const env = "test";
     const testUser = { username: "jack", password: "1234abc" };
 
     localStorage.setItem("test-user", JSON.stringify(testUser));
@@ -68,5 +60,23 @@ describe("check if user is already logged in", () => {
 
     expect(userIsLoggedIn).toBeTruthy();
     expect(userIsLoggedIn).toEqual(true);
+  });
+});
+
+describe("log user out of application", () => {
+  const env = "test";
+  const testUser = { username: "jack", password: "1234abc" };
+  const callback = jest.fn();
+
+  test("user is logged out", () => {
+    localStorage.setItem("test-user", JSON.stringify(testUser));
+    auth.logOut(callback, env);
+
+    const user = localStorage.getItem("test-user");
+
+    expect(user).toBeFalsy();
+    expect(user).toBeNull();
+    expect(callback).toHaveBeenCalled();
+    expect(callback).toHaveBeenCalledTimes(1);
   });
 });
