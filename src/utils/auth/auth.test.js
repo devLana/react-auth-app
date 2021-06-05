@@ -1,20 +1,23 @@
 import * as auth from ".";
 
-describe("getUser Function", () => {
+describe("get user from localStorage", () => {
   afterAll(() => {
     localStorage.removeItem("test-user");
   });
 
-  test("gets user from localStorage", () => {
-    const env = "test";
-    const testUser = { username: "jack", password: "1234abc" };
-    let user = auth.getUser(env);
+  const testUser = { username: "jack", password: "1234abc" };
+  const env = "test";
+
+  test("no user in localStorage", () => {
+    const user = auth.getUser(env);
 
     expect(user).toBeFalsy();
     expect(user).toBeNull();
+  });
 
+  test("found user in localStorage", () => {
     localStorage.setItem("test-user", JSON.stringify(testUser));
-    user = auth.getUser(env);
+    const user = auth.getUser(env);
 
     expect(user).toEqual(testUser);
     expect(user).toHaveProperty("username");
@@ -27,7 +30,7 @@ describe("setUser Function", () => {
     localStorage.removeItem("test-user");
   });
 
-  test("saves user to localStorage", () => {
+  test("saved user to localStorage", () => {
     const env = "test";
     const testUser = { username: "jack", password: "1234abc" };
 
@@ -38,5 +41,32 @@ describe("setUser Function", () => {
     expect(user).toEqual(testUser);
     expect(user).toHaveProperty("username");
     expect(user).toHaveProperty("password");
+  });
+});
+
+describe("isLoggedIn Function", () => {
+  afterAll(() => {
+    localStorage.removeItem("test-user");
+  });
+
+  test("user is not logged in", () => {
+    const env = "test";
+
+    const userIsLoggedIn = auth.isLoggedIn(env);
+
+    expect(userIsLoggedIn).toBeFalsy();
+    expect(userIsLoggedIn).toEqual(false);
+  });
+
+  test("user is logged in", () => {
+    const env = "test";
+    const testUser = { username: "jack", password: "1234abc" };
+
+    localStorage.setItem("test-user", JSON.stringify(testUser));
+
+    const userIsLoggedIn = auth.isLoggedIn(env);
+
+    expect(userIsLoggedIn).toBeTruthy();
+    expect(userIsLoggedIn).toEqual(true);
   });
 });
