@@ -1,14 +1,14 @@
-const { join } = require("path");
+const { join, resolve } = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: join(__dirname, "../src/index.js"),
+    app: join(process.cwd(), "src", "index.js"),
   },
-  context: join(__dirname, "../src"),
+  context: join(process.cwd(), "src"),
   output: {
-    path: join(__dirname, "../build"),
+    path: resolve(process.cwd(), "build"),
     clean: true,
     publicPath: "/",
     hashDigestLength: 10,
@@ -16,8 +16,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "React Authentication App",
-      template: join(__dirname, "../dist/index.html"),
-      favicon: join(__dirname, "../dist/favicon.ico"),
+      template: join(process.cwd(), "dist/index.html"),
+      favicon: join(process.cwd(), "dist/favicon.ico"),
       inject: "body",
     }),
     new webpack.ProvidePlugin({

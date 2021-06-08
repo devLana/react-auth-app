@@ -1,4 +1,4 @@
-const { join } = require("path");
+const { resolve } = require("path");
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const ESLintPlugin = require("eslint-webpack-plugin");
@@ -9,7 +9,7 @@ module.exports = merge(common, {
   target: "web",
   devtool: "inline-source-map",
   devServer: {
-    contentBase: join(__dirname, "../build"),
+    contentBase: resolve(process.cwd(), "build"),
     port: 9090,
     hot: true,
     overlay: true,
