@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import constants from "./utils/Constants";
 import usersDB from "./utils/usersDB";
 import { getUser } from "./utils/auth";
+import "./index.scss";
 
 const Dashboard = lazy(() => {
   return import(/* webpackChunkName: "Dashboard" */ "./pages/Dashboard");
