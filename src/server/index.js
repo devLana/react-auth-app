@@ -1,24 +1,23 @@
-const express = require("express");
-const path = require("path");
-// import React from "react";
-// import { renderToString } from "react-dom/server";
-// import { StaticRouter } from "react-router-dom";
-// import express from "express";
-// import path from "path";
-// import App from "../src/App";
+import React from "react";
+import { renderToString } from "react-dom/server";
+import { StaticRouter } from "react-router-dom";
+import express from "express";
+import path from "path";
+import App from "../app/App";
 
 const app = express();
 
-app.use(express.static(path.join(process.cwd(), "build")));
+app.use(express.json());
+app.use(express.static(path.join(process.cwd(), "server-build")));
 
-app.get("/*", (req, res) => {
-  // const markup = renderToString(
-  //   <StaticRouter>
-  //     <App />
-  //   </StaticRouter>
-  // );
-  // res.sendFile(path.resolve(process.cwd(), "build/index.html"));
-  res.send(`
+app.get("*", (req, res) => {
+  const jsxMarkup = renderToString(
+    <StaticRouter location={req.url} context={{}}>
+      <App />
+    </StaticRouter>
+  );
+
+  const htmlMarkup = `
     <!DOCTYPE html>
     <html lang="en">
       <head>
@@ -31,11 +30,13 @@ app.get("/*", (req, res) => {
         <noscript>
           JavaScript is disabled. Enable JavaScript to continue using this app
         </noscript>
-        <div id="app-root">Hello World</div>
+        <div id="app-root">${jsxMarkup}</div>
       </body>
     </html>
+  `;
 
-  `);
+  // res.sendFile(path.resolve(process.cwd(), "build/index.html"));
+  res.send(htmlMarkup);
 });
 
 app.listen(9000, () => {
