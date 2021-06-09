@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: join(process.cwd(), "src", "index.js"),
+    app: join(process.cwd(), "src", "client", "index.js"),
   },
   context: join(process.cwd(), "src"),
   output: {
