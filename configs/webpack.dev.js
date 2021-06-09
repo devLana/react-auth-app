@@ -9,7 +9,7 @@ module.exports = merge(common, {
   target: "web",
   devtool: "inline-source-map",
   devServer: {
-    contentBase: resolve(process.cwd(), "build"),
+    contentBase: resolve(process.cwd(), "client-build"),
     port: 9090,
     hot: true,
     overlay: true,
@@ -17,7 +17,6 @@ module.exports = merge(common, {
   },
   output: {
     filename: "js/[name].bundle.js",
-    assetModuleFilename: "images/[hash][ext][query]",
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

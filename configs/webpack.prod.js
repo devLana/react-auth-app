@@ -8,7 +8,6 @@ module.exports = merge(common, {
   devtool: "source-map",
   output: {
     filename: "js/[name]-[contenthash].js",
-    assetModuleFilename: "images/[hash][ext][query]",
   },
   plugins: [
     new MiniCssExtractPlugin({

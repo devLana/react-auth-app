@@ -8,10 +8,11 @@ module.exports = {
   },
   context: join(process.cwd(), "src"),
   output: {
-    path: resolve(process.cwd(), "build"),
+    path: resolve(process.cwd(), "client-build"),
     clean: true,
     publicPath: "/",
     hashDigestLength: 10,
+    assetModuleFilename: "images/[hash][ext][query]",
   },
   plugins: [
     new HtmlWebpackPlugin({
