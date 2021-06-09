@@ -42,6 +42,3 @@ jspm_packages/
 
 # Production
 build
-
-# Server
-server
