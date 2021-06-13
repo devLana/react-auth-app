@@ -7,9 +7,9 @@
     "build": "webpack --config ./configs/webpack.prod.js",
     "dev": "webpack serve --open --config ./configs/webpack.dev.js",
     "prepare": "husky install",
-    "start": "nodemon src/server/index.js",
-    "test": "jest --watch",
-    "watch": "webpack --watch"
+    "server:build": "webpack --config ./configs/webpack.server.js",
+    "server:start": "nodemon ./server-build/js/server.bundle.js",
+    "server:run": "yarn build && yarn server:build && yarn server:start"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "html-webpack-plugin": "^5.3.1",
     "husky": "^6.0.0",
     "mini-css-extract-plugin": "^1.6.0",
+    "nodemon": "^2.0.7",
     "postcss": "^8.3.0",
     "postcss-loader": "^5.3.0",
     "prettier": "2.3.0",
