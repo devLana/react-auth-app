@@ -6,7 +6,6 @@ module.exports = {
   entry: {
     app: join(process.cwd(), "src", "client", "index.js"),
   },
-  context: join(process.cwd(), "src"),
   output: {
     path: resolve(process.cwd(), "client-build"),
     clean: true,
