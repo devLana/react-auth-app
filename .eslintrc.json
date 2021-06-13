@@ -14,7 +14,7 @@
   },
   "plugins": ["react", "react-hooks"],
   "rules": {
-    "quotes": [1, "double"],
+    "quotes": 0,
     "no-unused-vars": 1,
     "linebreak-style": [1, "windows"],
     "no-trailing-spaces": 0,
