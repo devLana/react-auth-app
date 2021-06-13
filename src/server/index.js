@@ -3,39 +3,30 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import express from "express";
 import path from "path";
+import fs from "fs";
 import App from "../app/App";
 
 const app = express();
 
-app.use(express.json());
-app.use(express.static(path.join(process.cwd(), "server-build")));
+app.use(express.static("client-build"));
 
 app.get("*", (req, res) => {
+  const indexHtml = fs.readFileSync(
+    path.join(process.cwd(), "client-build", "index.html"),
+    { encoding: "utf8", flag: "r" }
+  );
+
   const jsxMarkup = renderToString(
     <StaticRouter location={req.url} context={{}}>
       <App />
     </StaticRouter>
   );
 
-  const htmlMarkup = `
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>React Auth App</title>
-      </head>
-      <body>
-        <noscript>
-          JavaScript is disabled. Enable JavaScript to continue using this app
-        </noscript>
-        <div id="app-root">${jsxMarkup}</div>
-      </body>
-    </html>
-  `;
+  const htmlMarkup = indexHtml.replace(
+    '<div id="app-root"></div>',
+    `<div id="app-root">${jsxMarkup}</div>`
+  );
 
-  // res.sendFile(path.resolve(process.cwd(), "build/index.html"));
   res.send(htmlMarkup);
 });
 
