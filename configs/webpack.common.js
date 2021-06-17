@@ -20,10 +20,6 @@ module.exports = {
       favicon: join(process.cwd(), "dist/favicon.ico"),
       inject: "body",
     }),
-    new webpack.ProvidePlugin({
-      React: "react",
-      ReactDOM: "react-dom",
-    }),
   ],
   module: {
     rules: [
