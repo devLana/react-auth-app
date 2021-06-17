@@ -1,4 +1,4 @@
-import { useEffect, useState, Suspense, lazy, Fragment } from "react";
+import React, { Suspense, useEffect, useState, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 import AuthenticateRoutes from "./Components/ProtectedRoutes/AuthenticateRoutes";
 import AuthenticateLanding from "./Components/ProtectedRoutes/AuthenticateLanding";
@@ -62,5 +62,30 @@ const App = () => {
     </>
   );
 };
+
+// import { useState, useEffect } from "react";
+
+// const App = () => {
+//   const [title, setTitle] = useState("");
+
+//   useEffect(() => {
+//     setTitle("Hello World");
+//   }, []);
+
+//   const changeTitle = () => {
+//     if (title === "React is awesome") {
+//       setTitle("Hello World");
+//     } else {
+//       setTitle("React is awesome");
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <h1>{title}</h1>
+//       <button onClick={changeTitle}>Update Title</button>
+//     </div>
+//   );
+// };
 
 export default App;
