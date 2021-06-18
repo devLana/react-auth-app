@@ -1,3 +1,4 @@
+import React from "react";
 import { getUser } from "../../utils/auth";
 import "./index.scss";
 

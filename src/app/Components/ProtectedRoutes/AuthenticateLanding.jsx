@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import React, { lazy } from "react";
 import { PropTypes } from "prop-types";
 import { Route } from "react-router-dom";
 import LandingPage from "../../pages/LandingPage";
