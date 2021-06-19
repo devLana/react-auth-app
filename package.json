@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config ./configs/webpack.prod.js",
     "dev": "webpack serve --open --config ./configs/webpack.dev.js",
-    "server:build": "webpack --config ./configs/webpack.server.js --env production -w",
+    "server:build": "webpack --config ./configs/webpack.server.js --env production",
     "server:start": "nodemon ./server-build/js/server.bundle.js",
     "ssr": "yarn build && yarn server:build && yarn server:start"
   },
