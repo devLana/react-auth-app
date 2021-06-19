@@ -63,29 +63,4 @@ const App = () => {
   );
 };
 
-// import { useState, useEffect } from "react";
-
-// const App = () => {
-//   const [title, setTitle] = useState("");
-
-//   useEffect(() => {
-//     setTitle("Hello World");
-//   }, []);
-
-//   const changeTitle = () => {
-//     if (title === "React is awesome") {
-//       setTitle("Hello World");
-//     } else {
-//       setTitle("React is awesome");
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h1>{title}</h1>
-//       <button onClick={changeTitle}>Update Title</button>
-//     </div>
-//   );
-// };
-
 export default App;
