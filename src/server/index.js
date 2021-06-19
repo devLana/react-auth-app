@@ -1,5 +1,5 @@
 import React from "react";
-import { renderToString } from "react-dom/server";
+import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import express from "express";
 import path from "path";
@@ -8,26 +8,31 @@ import App from "../app/App";
 
 const app = express();
 
-app.use(express.static("client-build"));
+app.use(express.static(path.resolve(process.cwd(), "client-build")));
 
 app.get("*", (req, res) => {
-  const indexHtml = fs.readFileSync(
+  fs.readFile(
     path.join(process.cwd(), "client-build", "index.html"),
-    { encoding: "utf8", flag: "r" }
-  );
+    "utf8",
+    (err, data) => {
+      if (err) {
+        return res.status(500).send("Error!");
+      }
 
-  const jsxMarkup = renderToString(
-    <StaticRouter location={req.url} context={{}}>
-      <App />
-    </StaticRouter>
-  );
+      const jsxMarkup = ReactDOMServer.renderToString(
+        <StaticRouter location={req.url} context={{}}>
+          <App />
+        </StaticRouter>
+      );
 
-  const htmlMarkup = indexHtml.replace(
-    '<div id="app-root"></div>',
-    `<div id="app-root">${jsxMarkup}</div>`
-  );
+      const htmlMarkup = data.replace(
+        '<div id="app-root"></div>',
+        `<div id="app-root">${jsxMarkup}</div>`
+      );
 
-  res.send(htmlMarkup);
+      return res.status(200).send(htmlMarkup);
+    }
+  );
 });
 
 app.listen(9000, () => {
