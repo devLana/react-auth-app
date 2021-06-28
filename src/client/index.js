@@ -1,6 +1,7 @@
 import "core-js/features/array/find";
 import "core-js/modules/es.promise";
 import "core-js/modules/es.array.iterator";
+import "regenerator-runtime/runtime";
 
 import React from "react";
 import ReactDOM from "react-dom";
