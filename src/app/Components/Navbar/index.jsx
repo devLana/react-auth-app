@@ -4,6 +4,7 @@ import Avatar from "../Avatar";
 import Image from "../Image";
 import constants from "../../utils/Constants";
 import { getUser, logOut } from "../../utils/auth";
+import post from "../../service/post";
 import "./index.scss";
 
 const Navbar = () => {
@@ -11,14 +12,24 @@ const Navbar = () => {
 
   const history = useHistory();
 
-  const { username } = getUser();
+  const { username, token } = getUser();
 
   const redirect = () => {
     history.push(constants.LANDING_ROUTE);
   };
 
-  const logUserOut = () => {
-    logOut(redirect);
+  const logUserOut = async () => {
+    const data = { username, token };
+
+    try {
+      const signOut = await post(constants.API_SIGNOUT, data);
+
+      if (signOut) {
+        logOut(redirect);
+      }
+    } catch {
+      alert("Something went wrong");
+    }
   };
 
   const navToggle = () => {
