@@ -10,8 +10,19 @@ const post = async (route, data) => {
     body: JSON.stringify(data),
   };
 
-  const response = await fetch(`${baseUrl}${route}`, options);
-  return response;
+  try {
+    const postData = await fetch(`${baseUrl}${route}`, options);
+    const response = await postData.json();
+
+    if (!postData.ok && postData.status >= 400) {
+      throw response;
+    }
+
+    return response;
+  } catch (err) {
+    alert(err.message);
+    return false;
+  }
 };
 
 export default post;
