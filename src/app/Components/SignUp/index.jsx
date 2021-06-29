@@ -1,21 +1,21 @@
 import React from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
-import { PropTypes } from "prop-types";
 import Form from "../Form";
 import { isLoggedIn, setUser } from "../../utils/auth";
 import constants from "../../utils/Constants";
 import useDocTitle from "../../hooks/useDocTitle";
 import { formErrors } from "../../utils/form";
+import post from "../../service/post";
 import "./index.scss";
 
-const SignUp = ({ users, handleUsers }) => {
+const SignUp = () => {
   const history = useHistory();
 
   useDocTitle("Sign up");
 
   const userIsLoggedIn = isLoggedIn();
 
-  const submitHandler = (values, setErrors) => {
+  const submitHandler = async (values, setErrors) => {
     const errors = {};
 
     if (!values.username.trim()) {
@@ -32,16 +32,20 @@ const SignUp = ({ users, handleUsers }) => {
       return;
     }
 
-    const userExists = users.some(({ username }) => {
-      return username.toLowerCase() === values.username.toLowerCase();
-    });
+    const data = {
+      username: values.username,
+      password: values.password,
+    };
 
-    if (userExists) {
-      alert("That username has been taken. Try another one");
-    } else {
-      history.push(constants.LANDING_ROUTE);
-      setUser(values);
-      handleUsers(values);
+    try {
+      const signUp = await post(constants.API_SIGNUP, data);
+
+      if (signUp) {
+        setUser(signUp.user);
+        history.push(constants.LANDING_ROUTE);
+      }
+    } catch {
+      alert("Something went wrong");
     }
   };
 
@@ -60,16 +64,6 @@ const SignUp = ({ users, handleUsers }) => {
       </div>
     </main>
   );
-};
-
-SignUp.propTypes = {
-  users: PropTypes.arrayOf(
-    PropTypes.shape({
-      username: PropTypes.string,
-      password: PropTypes.string,
-    })
-  ).isRequired,
-  handleUsers: PropTypes.func.isRequired,
 };
 
 export default SignUp;
