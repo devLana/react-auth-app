@@ -1,21 +1,21 @@
 import React from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
-import { PropTypes } from "prop-types";
 import Form from "../Form";
 import { isLoggedIn, setUser } from "../../utils/auth";
 import constants from "../../utils/Constants";
 import useDocTitle from "../../hooks/useDocTitle";
 import { formErrors } from "../../utils/form";
+import post from "../../service/post";
 import "./index.scss";
 
-const Login = ({ users }) => {
+const Login = () => {
   const history = useHistory();
 
   useDocTitle("Log in");
 
   const userIsLoggedIn = isLoggedIn();
 
-  const submitHandler = (values, setErrors) => {
+  const submitHandler = async (values, setErrors) => {
     const errors = {};
 
     if (!values.username) {
@@ -32,18 +32,20 @@ const Login = ({ users }) => {
       return;
     }
 
-    const userExists = users.find(({ username, password }) => {
-      return (
-        username.toLowerCase() === values.username.toLowerCase() &&
-        password === values.password
-      );
-    });
+    const data = {
+      username: values.username,
+      password: values.password,
+    };
 
-    if (userExists) {
-      history.push(constants.LANDING_ROUTE);
-      setUser(values);
-    } else {
-      alert("Invalid username & password combination");
+    try {
+      const login = await post(constants.API_LOGIN, data);
+
+      if (login) {
+        setUser(login.user);
+        history.push(constants.LANDING_ROUTE);
+      }
+    } catch {
+      alert("Something went wrong");
     }
   };
 
@@ -67,15 +69,6 @@ const Login = ({ users }) => {
       </div>
     </main>
   );
-};
-
-Login.propTypes = {
-  users: PropTypes.arrayOf(
-    PropTypes.shape({
-      username: PropTypes.string,
-      password: PropTypes.string,
-    })
-  ).isRequired,
 };
 
 export default Login;
