@@ -13,7 +13,7 @@ function Constants() {
   this.API_SIGNUP = "api/signup";
   this.API_SIGNIN = "api/signin";
   this.API_SIGNOUT = "api/signout";
-  this.apiVerifyToken = token => `api/verifyToken/${token}`;
+  this.apiVerifyToken = token => `api/verify-token/${token}`;
 }
 
 const constants = new Constants();

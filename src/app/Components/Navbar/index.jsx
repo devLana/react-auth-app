@@ -15,7 +15,7 @@ const Navbar = () => {
   const { username, token } = getUser();
 
   const redirect = () => {
-    history.push(constants.LANDING_ROUTE);
+    history.push(constants.LOGIN_ROUTE);
   };
 
   const logUserOut = async () => {
