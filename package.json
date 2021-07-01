@@ -55,6 +55,7 @@
     "defaults"
   ],
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.12.1",
     "express": "^4.17.1",
     "prop-types": "^15.7.2",
