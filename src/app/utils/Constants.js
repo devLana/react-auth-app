@@ -11,7 +11,7 @@ function Constants() {
       : "http://localhost:3030/";
 
   this.API_SIGNUP = "api/signup";
-  this.API_LOGIN = "api/signin";
+  this.API_SIGNIN = "api/signin";
   this.API_SIGNOUT = "api/signout";
   this.apiVerifyToken = token => `api/verifyToken/${token}`;
 }
