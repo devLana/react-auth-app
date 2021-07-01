@@ -22,13 +22,11 @@ const Navbar = () => {
     const data = { username, token };
 
     try {
-      const signOut = await post(constants.API_SIGNOUT, data);
+      await post(constants.API_SIGNOUT, data);
 
-      if (signOut) {
-        logOut(redirect);
-      }
-    } catch {
-      alert("Something went wrong");
+      logOut(redirect);
+    } catch (err) {
+      alert(err.response.data.message);
     }
   };
 

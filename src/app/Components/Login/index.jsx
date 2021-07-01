@@ -38,14 +38,12 @@ const Login = () => {
     };
 
     try {
-      const login = await post(constants.API_LOGIN, data);
+      const login = await post(constants.API_SIGNIN, data);
 
-      if (login) {
-        setUser(login.user);
-        history.push(constants.LANDING_ROUTE);
-      }
-    } catch {
-      alert("Something went wrong");
+      setUser(login.user);
+      history.push(constants.LANDING_ROUTE);
+    } catch (err) {
+      alert(err.response.data.message);
     }
   };
 
