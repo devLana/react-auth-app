@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import Form from "../Form";
 import { isLoggedIn, setUser } from "../../utils/auth";
@@ -9,6 +9,8 @@ import post from "../../service/post";
 import "./index.scss";
 
 const SignUp = () => {
+  const [loading, setLoading] = useState(false);
+
   const history = useHistory();
 
   useDocTitle("Sign up");
@@ -32,6 +34,8 @@ const SignUp = () => {
       return;
     }
 
+    setLoading(true);
+
     const data = {
       username: values.username,
       password: values.password,
@@ -44,6 +48,8 @@ const SignUp = () => {
       history.push(constants.LANDING_ROUTE);
     } catch (err) {
       alert(err.response.data.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -52,15 +58,21 @@ const SignUp = () => {
   }
 
   return (
-    <main className="sign-up__main">
-      <div className="sign-up__container">
-        <Form submitHandler={submitHandler} />
-        <div className="sign-up__link">
-          <span>Already have an account? </span>
-          <Link to={constants.LOGIN_ROUTE}>Log in</Link>
-        </div>
-      </div>
-    </main>
+    <>
+      {loading ? (
+        <div className="loader__text">Loading...</div>
+      ) : (
+        <main className="sign-up__main">
+          <div className="sign-up__container">
+            <Form submitHandler={submitHandler} />
+            <div className="sign-up__link">
+              <span>Already have an account? </span>
+              <Link to={constants.LOGIN_ROUTE}>Log in</Link>
+            </div>
+          </div>
+        </main>
+      )}
+    </>
   );
 };
 
