@@ -1,5 +1,6 @@
 import "core-js/features/array/find";
 import "core-js/modules/es.promise";
+import "core-js/modules/es.promise.finally";
 import "core-js/modules/es.array.iterator";
 import "regenerator-runtime/runtime";
 
