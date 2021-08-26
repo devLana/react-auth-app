@@ -9,7 +9,7 @@ module.exports = merge(common, {
   target: "web",
   devtool: "inline-source-map",
   devServer: {
-    contentBase: resolve(process.cwd(), "client-build"),
+    contentBase: resolve(process.cwd(), "build"),
     port: 9090,
     hot: true,
     overlay: true,

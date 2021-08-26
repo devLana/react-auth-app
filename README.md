@@ -1,3 +1,3 @@
 # react-auth-app
 
-An app with basic front end authorisation and authentication
+A simple app with basic front end authentication

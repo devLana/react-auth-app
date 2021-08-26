@@ -3,10 +3,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: join(process.cwd(), "src", "client", "index.js"),
+    app: join(process.cwd(), "src", "index.js"),
   },
   output: {
-    path: resolve(process.cwd(), "client-build"),
+    path: resolve(process.cwd(), "build"),
     clean: true,
     publicPath: "/",
     hashDigestLength: 10,

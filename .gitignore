@@ -40,6 +40,5 @@ jspm_packages/
 .env
 .env.test
 
-# Builds
-client-build
-server-build
+# Production
+build

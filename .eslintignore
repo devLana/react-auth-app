@@ -1,6 +1,5 @@
 # Dependency directories
 node_modules
 
-# Builds
-client-build
-server-build
+# Production
+build
